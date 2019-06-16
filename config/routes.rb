@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :tasks
   root 'tasks#index'
 
-  get 'tasks/show'
+  get 'tasks/complete'
   get 'tasks/edit'
   get 'tasks/new'
 end

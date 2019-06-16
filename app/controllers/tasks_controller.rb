@@ -3,7 +3,7 @@ class TasksController < ApplicationController
   def index
   end
   
-  def show
+  def complete
   end
 
   def new
