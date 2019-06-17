@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
 
-  def show
+  def index
+  end
+  
+  def complete
   end
 
   def new
