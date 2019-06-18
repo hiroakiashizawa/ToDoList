@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'tasks/complete'
   get 'tasks/edit'
   get 'tasks/new'
+
+  post 'tasks' => 'tasks#create'
 end
