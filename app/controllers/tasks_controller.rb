@@ -8,10 +8,12 @@ class TasksController < ApplicationController
   end
 
   def new
+    @tasks = Task.all
     @task = Task.new
   end
 
   def create
+    @tasks = Task.all
     @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
@@ -25,6 +27,7 @@ class TasksController < ApplicationController
   end
 
   def edit
+    @tasks = Task.all
   end
 
   private
