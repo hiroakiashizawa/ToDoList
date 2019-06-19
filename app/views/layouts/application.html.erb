@@ -38,24 +38,20 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary">Todo</button>
-              </div>
-            </div>
-            <div class="col-sm">
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-secondary">Complete</button>
-              </div>
-              <%= yield %>
-            </div>
-            <div class="col-sm">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary">Deleted</button>
-            </div>
+        <div class="col-sm">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">Todo</button>
           </div>
+        </div>
+        <div class="col-sm">
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-secondary">Complete</button>
+          </div>
+          <%= yield %>
+        </div>
+        <div class="col-sm">
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-secondary">Deleted</button>
         </div>
       </div>
     </div>
