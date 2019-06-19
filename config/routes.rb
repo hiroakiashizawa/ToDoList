@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'user/show'
 
   root 'tasks#index'
 
@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get 'tasks/complete'
   get 'tasks/edit'
   get 'tasks/new'
+
+  post 'tasks' => 'tasks#create'
 end
