@@ -1,9 +1,10 @@
 <ul class="tasks mt-5">
   <% @tasks.each do |task| %>
     <li>
-      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <input class="form-check-input" type="checkbox" value="">
       <label class="form-check-label" for="defaultCheck1">
-      <%= task.title %>
+      <span><%= task.id %>. </span>
+      <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
     </li>
     <div class='text-muted mt-1 mb-2'><%= task.content %></div>
   <% end %>
