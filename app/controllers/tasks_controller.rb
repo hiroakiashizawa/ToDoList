@@ -36,10 +36,15 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     if @task.update_attributes(tasks_params)
       #flash[:success] = "task updated"
-      redirect_to '/tasks'
+      redirect_to root_path
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    Task.find(params[:id]).destroy
+    redirect_to root_path
   end
 
   private
