@@ -5,6 +5,7 @@
       <label class="form-check-label" for="defaultCheck1">
       <span><%= task.id %>. </span>
       <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
+      <%= link_to "delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %>
     </li>
     <div class='text-muted mt-1 mb-2'><%= task.content %></div>
   <% end %>
