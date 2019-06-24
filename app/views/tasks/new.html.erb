@@ -1,3 +1,7 @@
+<% if flash.now[:error] %>
+  <p><%= flash.now[:error] %></p>
+<% end %>
+
 <%= render 'tasks', task: @tasks %>
 
 <%= render 'form', task: @task %>

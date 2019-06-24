@@ -21,7 +21,9 @@ class TasksController < ApplicationController
         format.html { redirect_to '/tasks', notice: 'Task was successfully created.' }
         format.json { render :index, status: :created, location: @task }
       else
-        # エラーの場合
+        flash.now[:error] = "error"
+        format.html { render 'new' }
+        format.json { render json: @task.errors }
       end
     end
   end
