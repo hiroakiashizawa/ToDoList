@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :tasks, optional: true, dependent: :destroy
+  has_many :tasks, dependent: :destroy
   
   with_options presence: true do
     validates :name
