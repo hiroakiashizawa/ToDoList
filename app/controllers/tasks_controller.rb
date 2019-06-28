@@ -13,8 +13,9 @@ class TasksController < ApplicationController
   end
 
   def create
+    @admin = User.find_by(name:"admin")
     @tasks = Task.all
-    @task = current_user.tasks.build(tasks_params)
+    @task = @admin.tasks.build(tasks_params)
 
     respond_to do |format|
       if @task.save
