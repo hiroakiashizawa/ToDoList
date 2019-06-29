@@ -40,12 +40,12 @@
       <div class="row">
         <div class="col-sm">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">Todo</button>
+            <%= link_to "Todo", tasks_path, class: "btn btn-secondary" %>
           </div>
         </div>
         <div class="col-sm">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-secondary">Complete</button>
+            <%= button_to "complete", complete_tasks_path, :method => :get, class: "btn btn-secondary" %>
           </div>
           <%= yield %>
         </div>

@@ -8,5 +8,6 @@
       <%= link_to "delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %>
     </li>
     <div class='text-muted mt-1 mb-2'><%= task.content %></div>
+    <div class='text-muted mt-1 mb-2'><%= task.timelimit %></div>
   <% end %>
 </ul>
