@@ -45,7 +45,7 @@
         </div>
         <div class="col-sm">
           <div class="btn-group" role="group" aria-label="Basic example">
-            <%= button_to "complete", "/tasks/complete", :method => :get, class: "btn btn-secondary" %>
+            <%= button_to "complete", complete_tasks_path, :method => :get, class: "btn btn-secondary" %>
           </div>
           <%= yield %>
         </div>
