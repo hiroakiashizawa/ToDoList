@@ -1,13 +1,9 @@
 Rails.application.routes.draw do
   get 'user/show'
 
-  resources :tasks
-  
-  root 'tasks#index'
+  resources :tasks do
+    get 'complete', on: :collection
+  end
 
-  get 'tasks', to: 'tasks#index'
-  get 'tasks/complete'
-  get 'tasks/new'
-  post 'tasks' => 'tasks#create'
-  patch 'tasks' => 'tasks#update'
+  root 'tasks#index'
 end
