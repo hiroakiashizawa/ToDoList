@@ -6,7 +6,6 @@ RSpec.describe User, type: :model do
     @user = FactoryBot.build(:user)
     @user_no_name = FactoryBot.build(:user_no_name)
     @user_no_email = FactoryBot.build(:user_no_email)
-    @user_dup_email = FactoryBot.build(:user_dup_email)
   end
 
   describe 'validation' do
@@ -26,6 +25,10 @@ RSpec.describe User, type: :model do
     end
 
     it "is invalid with a duplicate email address" do
+      ## ユーザ保存
+      @user.save
+      ## emailが重複しているユーザを登録
+      @user_dup_email = FactoryBot.build(:user_dup_email)
       @user_dup_email.valid?
       expect(@user_dup_email.errors[:email]).to include("has already been taken")
     end
