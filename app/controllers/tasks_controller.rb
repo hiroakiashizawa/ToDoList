@@ -5,6 +5,7 @@ class TasksController < ApplicationController
   end
   
   def complete
+    @tasks = Task.all
   end
 
   def new
@@ -53,6 +54,6 @@ class TasksController < ApplicationController
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content, :timelimit)
+      params.require(:task).permit(:title, :content, :timelimit, :completed)
     end
 end
