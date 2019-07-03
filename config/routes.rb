@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get 'user/show'
+  
+  get 'users/new'
+  resources :users
 
   resources :tasks do
     get 'complete', on: :collection

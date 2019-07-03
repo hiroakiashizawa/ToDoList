@@ -1,0 +1,17 @@
+<%= form_with(model: user, local: true) do |form| %>
+  <div>
+    <%= form.text_field :name, autocomplete: 'off' %>
+  </div>
+
+  <div>
+    <%= form.text_field :email, autocomplete: 'off' %>
+  </div>
+
+  <span class="btn btn-sm">
+    <%= form.submit %>
+  </span>
+
+  <span class="btn btn-sm">
+    <a href="/user" class="text-reset text-muted">cancel</a>
+  </span>
+<%end%>
