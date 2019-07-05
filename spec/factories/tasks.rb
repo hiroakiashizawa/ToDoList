@@ -3,6 +3,7 @@ FactoryBot.define do
   factory :task do
     title { "title" }
     content { "content" }
+    timelimit { DateTime.now }
     association :user
 
     factory :task_no_title do
