@@ -16,4 +16,10 @@
   <span>
     <a href="/users" class="text-reset text-muted">cancel</a>
   </span>
+  <article>
+    <button class="btn btn-default">
+      <%= link_to "delete user", @user, method: :delete, class: "text-danger", data: { confirm: "This User will Completly Delete, Are you sure?" } %>
+    </button>
+  </article>
+  
 <% end %>
