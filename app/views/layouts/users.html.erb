@@ -36,13 +36,21 @@
         </div>
       </nav>
     </header>
-      <div>
-        <%= yield %>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+          </div>
+          <div class="col-sm">
+            <%= yield %>
+          </div>
+          <div class="col-sm">
+          </div>
+        </div>
       </div>
-    <div class="fixed-bottom">
-      <footer>
+    <footer>
+      <div class="fixed-bottom">
         ©️ 2019 Hiroaki Ashizawa
-      </footer>
-    </div>
+      </div>
+    </footer>
   </body>
 </html>
