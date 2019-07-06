@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+
+  root 'tasks#index'
   
-  get 'users/new'
   resources :users
+  get 'users/new'
 
   resources :tasks do
     get 'complete', on: :collection
   end
 
-  root 'tasks#index'
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  delete '/login' => 'sessions#destroy' 
 end
