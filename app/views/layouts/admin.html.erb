@@ -26,7 +26,7 @@
             </li>
             <li class="d-flex align-items-center ml-3">
               <% if current_user.admin %>
-                <div class="text-info">Admin</div>
+                <%= link_to "Admin" , admin_path, method: :get, class: "text-info" %>
               <% else %>
                 <% if logged_in? %>
                 <%= link_to "ログアウト" , login_path, method: :delete %>
@@ -48,10 +48,10 @@
     </header>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-5">
           <%= render 'admin/index_left' %>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 mt-5">
           <%= yield %>
         </div>
       </div>
