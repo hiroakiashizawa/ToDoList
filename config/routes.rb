@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   delete '/login' => 'sessions#destroy' 
 
   get '/admin' => 'admin#index'
+  get '/admin/users' => 'admin#users_show'
+  get '/admin/tasks' => 'admin#tasks_show'
 end
