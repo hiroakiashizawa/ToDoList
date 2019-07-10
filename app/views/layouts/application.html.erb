@@ -26,7 +26,7 @@
             </li>
             <li class="d-flex align-items-center ml-3">
               <% if current_user.admin %>
-                <div class="text-info">Admin</div>
+                <%= link_to "Admin" , admin_path, method: :get, class: "text-info" %>
               <% else %>
                 <% if logged_in? %>
                 <%= link_to "ログアウト" , login_path, method: :delete %>
