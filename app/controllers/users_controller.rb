@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+  before_action :require_login
+  skip_before_action :require_login, only: [:new, :create]
 
   def index
-    @users = User.all
+    @user = User.find_by(id: current_user.id)
   end
 
   def new
@@ -38,12 +40,20 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    redirect_to users_path
+    @current_user = nil
+    redirect_to root_path
   end
 
   private
 
     def users_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "Please login!"
+        redirect_to login_path
+      end
     end
 end

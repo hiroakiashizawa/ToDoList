@@ -1,2 +1,18 @@
 <h1>New User</h1>
-<%= render 'form', user: @user %>
+<%= form_with(scope: :user, url:users_path, local: true) do |form| %>
+
+  <%= form.label :name %>
+  <%= form.text_field :name, class: 'form-control', autocomplete: 'off' %>
+
+  <%= form.label :email %>  
+  <%= form.email_field :email, class: 'form-control', autocomplete: 'off' %>
+  
+  <%= form.label :password %>
+  <%= form.password_field :password, class: 'form-control' %>
+
+  <%= form.submit "Create User", class: "btn btn-default" %>
+
+  <span class="btn btn-sm">
+    <a href="/tasks" class="text-reset text-muted">cancel</a>
+  </span>
+<%end%>
