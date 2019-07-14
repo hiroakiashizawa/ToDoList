@@ -1,3 +1,8 @@
-<h3>All User List</h3>
-
-<%= render "users", user: @users %>
+<h3>User's profile</h3>
+<ul class="mt-5">
+  <div>
+    <div>Name : <%= link_to @user.name, edit_user_path(@user), class: "text-info"%></div>
+    
+    <div>Email : <%= @user.email %></div>
+  </div>
+</ul>
