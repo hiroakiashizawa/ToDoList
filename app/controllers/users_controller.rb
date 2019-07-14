@@ -2,8 +2,10 @@ class UsersController < ApplicationController
   before_action :require_login
   skip_before_action :require_login, only: [:new, :create]
 
-  def index
-    @user = User.find_by(id: current_user.id)
+  def index 
+    if current_user
+      @user = User.find_by(id: current_user.id)
+    end
   end
 
   def new

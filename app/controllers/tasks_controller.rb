@@ -1,7 +1,9 @@
 class TasksController < ApplicationController
 
   def index
-    @tasks = Task.all
+    if current_user
+      @tasks = current_user.tasks.all
+    end
   end
   
   def complete
@@ -9,14 +11,13 @@ class TasksController < ApplicationController
   end
 
   def new
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
     @task = Task.new
   end
 
   def create
-    @admin = User.find_by(name:"admin")
-    @tasks = Task.all
-    @task = @admin.tasks.build(tasks_params)
+    @tasks = current_user.tasks.all
+    @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
       if @task.save
@@ -31,12 +32,12 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
     @task = Task.find(params[:id])
   end
 
   def update
-    @tasks = Task.all
+    @tasks = current_user.tasks.all
     @task = Task.find(params[:id])
     if @task.update_attributes(tasks_params)
       #flash[:success] = "task updated"
@@ -54,6 +55,6 @@ class TasksController < ApplicationController
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content, :timelimit, :completed)
+      params.require(:task).permit(:title, :content, :timelimit, :completed, :user_id)
     end
 end
