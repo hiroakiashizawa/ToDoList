@@ -6,6 +6,14 @@
   admin:"true"
 )
 
+@guest = User.create!(
+  name:"guest",
+  email:"guest@todo.com",
+  password:"password",
+  password_confirmation:"password",
+  admin:"false"
+)
+
 @user1 = User.create!(
   name:"user-1",
   email:"user-1@todo.com",
@@ -24,6 +32,12 @@
 
 Task.create!(
   [
+    {
+      title:"Guest's task",
+      content:"todo",
+      timelimit:DateTime.now,
+      user_id: @guest.id
+    },
     {
       title:"User1's task",
       content:"todo",

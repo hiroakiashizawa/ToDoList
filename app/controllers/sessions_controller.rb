@@ -1,5 +1,8 @@
 class SessionsController < ApplicationController
 
+  def index
+  end
+
   def new
   end
 
@@ -20,6 +23,12 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    redirect_to login_index_path
+  end
+
+  def login_as_guest
+    guest = User.find_by(email: "guest@todo.com")
+    log_in guest
     redirect_to root_url
   end
 end

@@ -10,9 +10,11 @@ Rails.application.routes.draw do
     get 'complete', on: :collection
   end
 
+  get '/login/index' => 'sessions#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
-  delete '/login' => 'sessions#destroy' 
+  delete '/login' => 'sessions#destroy'
+  get '/login/guest' => 'sessions#login_as_guest'
 
   get '/admin' => 'admin#index'
   get '/admin/users' => 'admin#users_show'
