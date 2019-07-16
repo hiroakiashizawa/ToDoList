@@ -1,10 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
+  include SessionsHelper
 
   describe "#index" do
 
+    before do
+      @user = FactoryBot.create(:user)
+    end
+
     it "responds successfully" do
+      log_in(@user)
       get :index
       expect(response).to be_success
     end
@@ -19,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
       }.to change{ User.count }.by(1)
     end
 
-    it "redirectes to the index page" do
+    it "redirectes to users/index page" do
       users_params = FactoryBot.attributes_for(:user)
       post :create, params: { user: users_params }
       expect(response).to redirect_to "/users"
@@ -33,6 +39,7 @@ RSpec.describe UsersController, type: :controller do
     end
 
     it "update a user" do
+      log_in(@user)
       users_params = FactoryBot.attributes_for(:user, name: "hiroaki")
       patch :update, params: { id: @user.id, user: users_params }
       expect(@user.reload.name).to eq "hiroaki"
@@ -40,12 +47,13 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "#destroy" do
-    
+
     before do
       @user = FactoryBot.create(:user)
     end
 
     it "destroy a user" do
+      log_in(@user)
       expect {
         delete :destroy, params: { id: @user.id }
       }.to change{ User.count }.by(-1)
