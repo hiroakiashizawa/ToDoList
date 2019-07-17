@@ -17,6 +17,7 @@ gem 'ffi', '>= 1.11.1'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
+gem 'nio4r', '>= 2.4.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
