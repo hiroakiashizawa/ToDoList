@@ -6,6 +6,11 @@ FactoryBot.define do
     email { "example@test.com" }
     password { "password" }
     password_confirmation { "password" }
+    admin { "false" }
+
+    factory :user_admin do
+      admin { "true" }
+    end
 
     factory :user_no_name do
       name { nil }
@@ -17,6 +22,10 @@ FactoryBot.define do
   
     factory :user_dup_email do
       name { "mike" }
+    end
+
+    factory :user_as_guest do
+      email { "guest@todo.com" }
     end
 
   end

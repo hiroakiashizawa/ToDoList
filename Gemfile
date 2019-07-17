@@ -18,6 +18,7 @@ gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'nio4r', '>= 2.4.0'
+gem 'rails-controller-testing'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
