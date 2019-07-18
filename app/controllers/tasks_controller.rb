@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+  before_action :require_login
 
   def index
     if current_user
@@ -56,5 +57,12 @@ class TasksController < ApplicationController
 
     def tasks_params
       params.require(:task).permit(:title, :content, :timelimit, :completed, :user_id)
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "Please login!"
+        redirect_to login_path
+      end
     end
 end
