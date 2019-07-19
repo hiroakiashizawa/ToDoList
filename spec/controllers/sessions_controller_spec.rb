@@ -22,14 +22,14 @@ RSpec.describe SessionsController, type: :controller do
   describe "POST #create" do
 
     context "as admin user" do
-      let(:user) { FactoryBot.create(:user_admin) }
+      let(:user_admin) { FactoryBot.create(:user_admin) }
       let(:valid_parameters) do
-        { email: user.email, password: user.password }
+        { email: user_admin.email, password: user_admin.password }
       end
 
       it "success to log in" do
         post :create, params: { session: valid_parameters }
-        expect(session[:user_id]).to eq user.id
+        expect(session[:user_id]).to eq user_admin.id
       end
 
       it "redirectes to tasks/index page" do
