@@ -9,6 +9,11 @@ FactoryBot.define do
     admin { "false" }
 
     factory :user_admin do
+      id { 101 }
+      name { "admin" }
+      email { "admin@test.com" }
+      password { "password" }
+      password_confirmation { "password" }
       admin { "true" }
     end
 
