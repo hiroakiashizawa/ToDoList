@@ -1,10 +1,12 @@
 FactoryBot.define do
 
   factory :task do
+    id { 1 }
     title { "title" }
     content { "content" }
     timelimit { DateTime.now }
     user_id { @user }
+    completed { "false" }
     association :user
 
     factory :task_no_title do
