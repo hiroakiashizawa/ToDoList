@@ -3,12 +3,8 @@ class TasksController < ApplicationController
 
   def index
     if current_user
-      @tasks = current_user.tasks.all
+      @tasks = current_user.tasks.all.where(completed: false)
     end
-  end
-  
-  def complete
-    @tasks = Task.all
   end
 
   def new
@@ -38,25 +34,47 @@ class TasksController < ApplicationController
   end
 
   def update
-    @tasks = current_user.tasks.all
     @task = Task.find(params[:id])
+
     if @task.update_attributes(tasks_params)
-      #flash[:success] = "task updated"
+      flash[:success] = "task updated"
       redirect_to root_path
     else
       render 'edit'
     end
   end
 
-  def destroy
-    Task.find(params[:id]).destroy
+  def completed
+    @tasks = current_user.tasks.all.where(completed: true)
+  end
+
+  def edit_completed
+    @task = Task.find(params[:id])
+    is_completed = @task.completed
+    @task.update_attributes(completed: !is_completed)
     redirect_to root_path
+  end
+
+  def deleted
+    @tasks = current_user.tasks.all.where(deleted: true)
+  end
+
+  def pre_destroy
+    @task = Task.find(params[:id])
+    is_deleted = @task.deleted
+    @task.update_attributes(deleted: !is_deleted)
+    redirect_to deleted_tasks_path
+  end
+
+  def destroy
+    Task.find(params[:id]).destroy!
+    redirect_to deleted_tasks_path
   end
 
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content, :timelimit, :completed, :user_id)
+      params.require(:task).permit(:title, :content, :timelimit, :complete, :user_id)
     end
 
     def require_login

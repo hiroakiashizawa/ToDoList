@@ -1,7 +1,7 @@
 <ul class="tasks mt-5">
   <% if @tasks %>
     <% @tasks.each do |task| %>
-      <% if !task.completed && !task.deleted %>
+      <% if task.completed && !task.deleted %>
         <li>
           <input class="form-check-input" type="checkbox" value="">
           <label class="form-check-label" for="defaultCheck1">
@@ -12,7 +12,7 @@
             </button>
             <div class="dropdown-menu">
               <div>
-                <%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-danger" %>
+                <%= link_to "Incomplete", edit_completed_task_path(task), method: :patch, class: "text-success" %>
               </div>
               <div>
                 <%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger" %>
@@ -20,13 +20,10 @@
             </div>
           </div>
         </li>
-      <%= render 'task_content', task: task %>
+        <%= render 'task_content', task: task %>
       <% end %>
     <% end %>
   <% else %>
     <div>No Tasks</div>
   <% end %>
 </ul>
-<p>
-  <a href="/tasks/new" class="text-reset text-muted">+ Add Task</a>
-</p>

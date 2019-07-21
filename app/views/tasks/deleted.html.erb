@@ -1,32 +1,29 @@
 <ul class="tasks mt-5">
   <% if @tasks %>
     <% @tasks.each do |task| %>
-      <% if !task.completed && !task.deleted %>
+      <% if task.deleted %>
         <li>
           <input class="form-check-input" type="checkbox" value="">
           <label class="form-check-label" for="defaultCheck1">
-          <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
+          <span class="text-info"><%= task.title %></span>
           <div class="btn-group">
             <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="sr-only">ドロップダウンの切替</span>
             </button>
             <div class="dropdown-menu">
               <div>
-                <%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-danger" %>
+                <%= link_to "Restore", pre_destroy_task_path(task), method: :patch, class: "text-success" %>
               </div>
               <div>
-                <%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger" %>
+                <%= link_to "Delete", task_path(task), method: :delete, class: "text-danger" %>
               </div>
             </div>
           </div>
         </li>
-      <%= render 'task_content', task: task %>
+        <%= render 'task_content', task: task %>
       <% end %>
     <% end %>
   <% else %>
     <div>No Tasks</div>
   <% end %>
 </ul>
-<p>
-  <a href="/tasks/new" class="text-reset text-muted">+ Add Task</a>
-</p>
