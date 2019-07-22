@@ -63,7 +63,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     is_deleted = @task.deleted
     @task.update_attributes(deleted: !is_deleted)
-    redirect_to deleted_tasks_path
+    redirect_to root_path
   end
 
   def destroy
