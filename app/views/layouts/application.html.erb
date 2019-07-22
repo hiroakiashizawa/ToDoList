@@ -58,12 +58,12 @@
           </div>
           <div class="col-xl-4">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <%= button_to "complete", complete_tasks_path, :method => :get, class: "btn btn-secondary" %>
+              <%= link_to "complete", completed_tasks_path, class: "btn btn-secondary" %>
             </div>
           </div>
           <div class="col-xl-4">
             <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary">Deleted</button>
+              <%= link_to "deleted", deleted_tasks_path, class: "btn btn-secondary" %>
             </div>
           </div>
         </div>

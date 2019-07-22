@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.describe UsersController, type: :controller do
   include SessionsHelper
 
+  let(:user) { FactoryBot.create(:user) }
+
   describe "GET #index" do
-    let(:user) { FactoryBot.create(:user) }
 
     it "responds successfully" do
       log_in(user)
@@ -29,7 +30,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "PATCH #update" do
-    let(:user) { FactoryBot.create(:user) }
     let(:user_params) { FactoryBot.attributes_for(:user, name: "hiroaki") }
 
     it "update a user" do
@@ -40,7 +40,6 @@ RSpec.describe UsersController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    let(:user) { FactoryBot.create(:user) }
 
     it "destroy a user" do
       log_in(user)

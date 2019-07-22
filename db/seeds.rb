@@ -36,19 +36,42 @@ Task.create!(
       title:"Guest's task",
       content:"todo",
       timelimit:DateTime.now,
-      user_id: @guest.id
+      user_id: @guest.id,
+      completed: false,
+      deleted: false
     },
     {
       title:"User1's task",
       content:"todo",
       timelimit:DateTime.now,
-      user_id: @user1.id
+      user_id: @user1.id,
+      completed: false,
+      deleted: false
     },
     {
       title:"User2's task",
       content:"next-todo",
       timelimit:DateTime.now,
-      user_id: @user2.id
+      user_id: @user2.id,
+      completed: false,
+      deleted: false
+    },
+    {
+      title:"completed task",
+      content:"next-todo",
+      timelimit:DateTime.now,
+      user_id: @user1.id,
+      completed: true,
+      deleted: false
+    },
+    {
+      title:"deleted task",
+      content:"next-todo",
+      timelimit:DateTime.now,
+      user_id: @user1.id,
+      completed: false,
+      deleted: true
     }
+
   ]
 )

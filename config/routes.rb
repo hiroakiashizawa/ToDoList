@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get 'users/new'
 
   resources :tasks do
-    get 'complete', on: :collection
+    get 'completed', on: :collection
+    patch 'edit_completed', on: :member
+    get 'deleted', on: :collection
+    patch 'pre_destroy', on: :member
   end
 
   get '/login/index' => 'sessions#index'
