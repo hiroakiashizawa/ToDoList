@@ -20,6 +20,9 @@ gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'nio4r', '>= 2.4.0'
 gem 'rails-controller-testing'
 
+# 検索機能
+gem 'ransack'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.7.0'
@@ -35,6 +38,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'bullet'
 end
 
 group :test do
