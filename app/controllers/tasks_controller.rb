@@ -2,9 +2,7 @@ class TasksController < ApplicationController
   before_action :require_login
 
   def index
-    if current_user
-      @tasks = current_user.tasks.all.where(completed: false)
-    end
+    @tasks = current_user.tasks.all.where(completed: false)
   end
 
   def new
