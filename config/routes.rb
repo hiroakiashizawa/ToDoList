@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     patch 'edit_completed', on: :member
     get 'deleted', on: :collection
     patch 'pre_destroy', on: :member
+    get 'search_tasks', on: :collection
   end
 
   get '/login/index' => 'sessions#index'

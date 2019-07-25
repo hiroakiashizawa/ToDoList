@@ -21,6 +21,12 @@ FactoryBot.define do
       admin { "true" }
     end
 
+    factory :guest do
+      id { 103 }
+      name { "guest" }
+      email { "guest@test.com" }
+    end
+
     factory :user_no_name do
       name { nil }
     end

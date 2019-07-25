@@ -24,7 +24,7 @@ class AdminController < ApplicationController
     def require_admin
       unless current_user.admin
         flash[:danger] = "Please login by admin user!"
-        redirect_to login_path
+        redirect_to root_path
       end
     end
 end
