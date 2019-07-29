@@ -2,16 +2,16 @@ class TasksController < ApplicationController
   before_action :require_login
 
   def index
-    @tasks = current_user.tasks.all.where(completed: false)
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false)
   end
 
   def new
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false)
     @task = Task.new
   end
 
   def create
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false)
     @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tasks = current_user.tasks.all
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false)
     @task = Task.find(params[:id])
   end
 
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @tasks = current_user.tasks.all.where(completed: true)
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: true)
   end
 
   def edit_completed
@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def deleted
-    @tasks = current_user.tasks.all.where(deleted: true)
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(deleted: true)
   end
 
   def pre_destroy
@@ -67,6 +67,9 @@ class TasksController < ApplicationController
   def destroy
     Task.find(params[:id]).destroy!
     redirect_to deleted_tasks_path
+  end
+
+  def task_status
   end
 
   private

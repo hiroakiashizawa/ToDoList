@@ -2,8 +2,6 @@
   <p><%= flash.now[:error] %></p>
 <% end %>
 
-<%= render 'tasks', task: @tasks %>
-
 <%= form_with(model: @task, local: true) do |form| %>
   <div class="field">
     <%= form.text_field :title, autocomplete: 'off' %>
@@ -14,7 +12,7 @@
   </div>
 
   <div class="field">
-    <%= form.datetime_select :timelimit %>
+    <%= form.date_field :timelimit %>
   </div>
 
   <span class="btn btn-sm">
@@ -24,4 +22,5 @@
     <a href="/tasks" class="text-reset text-muted">cancel</a>
   </span>
 <% end %>
-<%= render 'tasks/index_bar' %>
+
+<%= render 'tasks', task: @tasks %>
