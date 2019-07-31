@@ -1,6 +1,6 @@
 <% if !guest? || !logged_in? %>
   <div class="container-fluid">
-    <div class="row text-center">
+    <div class="row text-center mb-3">
       <div class="col-xl-4">
         <div class="btn-group" role="group" aria-label="Basic example">
           <%= link_to "Todo", tasks_path, class: "btn btn-primary" %>
