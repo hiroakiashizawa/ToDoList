@@ -1,3 +1,5 @@
+<%= will_paginate @tasks, class:"m-5"%>
+
 <ul class="tasks mt-5">
   <% @survey = @search_tasks || @tasks %>
   <% if @survey %>
@@ -33,3 +35,5 @@
     <div class="mt-3">No Tasks</div>
   <% end %>
 </ul>
+
+<%= will_paginate @tasks, class:"m-5"%>
