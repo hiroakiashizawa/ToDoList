@@ -28,4 +28,8 @@ module SessionsHelper
       return false
     end
   end
+
+  def guest?
+    current_user.name == 'guest' ? true : false
+  end
 end

@@ -9,4 +9,14 @@ module TasksHelper
     @search = current_user.tasks.all.ransack(params[:q])
     @search_tasks = @search.result
   end
+
+  def status(task)
+    if task.deleted
+      return 'deleted'
+    elsif task.completed
+      return 'completed'
+    else
+      return 'neutral'
+    end
+  end
 end

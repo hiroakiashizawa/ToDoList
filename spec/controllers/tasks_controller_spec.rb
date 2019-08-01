@@ -83,7 +83,7 @@ RSpec.describe TasksController, type: :controller do
       it "redirects to tasks/index page" do
         log_in(user)
         post :create, params: { task: task_params }
-        expect(response).to redirect_to "/tasks"
+        expect(response).to redirect_to root_path
       end
 
     end
@@ -149,10 +149,10 @@ RSpec.describe TasksController, type: :controller do
         expect(task.reload.completed).to eq true
       end
 
-      it "redirects to tasks/index page" do
+      it "redirects to tasks/completed page" do
         log_in(user)
         patch :edit_completed, params: { id: task.id, task: task_params }
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to completed_tasks_path
       end
     end
 
@@ -184,7 +184,7 @@ RSpec.describe TasksController, type: :controller do
       it "redirects to tasks/deleted page" do
         log_in(user)
         patch :pre_destroy, params: { id: task.id }
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to deleted_tasks_path
 
       end
     end

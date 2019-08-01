@@ -23,6 +23,11 @@ gem 'rails-controller-testing'
 # 検索機能
 gem 'ransack'
 
+# ページネーション機能
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.7.0'
