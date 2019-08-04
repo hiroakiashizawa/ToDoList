@@ -1,17 +1,17 @@
 class TasksController < ApplicationController
+  include Common
   before_action :require_login
 
   def index
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false).paginate(page: params[:page], per_page: 5)
+    @tasks = task_common
   end
 
   def new
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false).paginate(page: params[:page], per_page: 5)
-    @task = Task.new
+    @tasks = task_common
   end
 
   def create
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false).paginate(page: params[:page], per_page: 5)
+    @tasks = task_common
     @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false).paginate(page: params[:page], per_page: 5)
+    @tasks = task_common
     @task = Task.find(params[:id])
   end
 
@@ -39,7 +39,7 @@ class TasksController < ApplicationController
   end
 
   def completed
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: true).paginate(page: params[:page], per_page: 5)
+    @tasks = task_common('completed')
   end
 
   def edit_completed
@@ -55,7 +55,7 @@ class TasksController < ApplicationController
   end
 
   def deleted
-    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(deleted: true).paginate(page: params[:page], per_page: 5)
+    @tasks = task_common('deleted')
   end
 
   def pre_destroy
