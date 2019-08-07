@@ -60,20 +60,22 @@
             </div>
         </div>
       </nav>
-      <% if !current_user.admin? %>
-        <%= render 'head/header_bar' %>
-      <% end %>
     </header>
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
-        <div class="col-md-4 mt-5">
+        <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <%= render 'admin/index_left' if admin? %>
         </div>
-        <div class="col-md-8 mt-3">
-          <% flash.each do |message_type, message| %>
-            <%= content_tag(:div, message, class: "mt-3 alert alert-#{message_type}") %>
-          <% end %>
-          <%= yield %>
+        <div class="col-md-10 mt-3 row">
+          <%= render 'head/header_bar' if !admin?%>
+          <div class="col-md-3"></div>
+          <div class="col-md-4">
+            <% flash.each do |message_type, message| %>
+              <%= content_tag(:div, message, class: "mt-3 alert alert-#{message_type}") %>
+            <% end %>
+            <%= yield %>
+          </div>
+          <div class="col-md-3"></div>
         </div>
       </div>
     </div>

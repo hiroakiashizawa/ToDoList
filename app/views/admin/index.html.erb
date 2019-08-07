@@ -1,6 +1,9 @@
-<h1>ようこそ管理者コンソールへ</h1>
+<h1>管理者コンソール</h1>
 <p>作成途中です</p>
 <p>レコードを検索できるようにしたい</p>
 <h2>週次タスク一覧</h2>
 
-<%= column_chart @tasks.group_by_day_of_week(:created_at, format: "%a").count %>
+<div id="graf_select"><%= button_to 'クリック', admin_graf_select_path, method: :get, remote: true %></div>
+
+<%= render(:partial => 'admin/graf_1') if session[:graf] == 1 %>
+<%= render(:partial => 'admin/graf_2') unless session[:graf] == 1 %>

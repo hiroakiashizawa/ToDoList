@@ -4,16 +4,22 @@
   <% @users.each do |user| %>
     <div class="card mb-3">
       <li>
-        <div class="card-title">
+        <h5 class="card-title ml-3 mt-3">
           <%= link_to user.name, edit_user_path(user), class: "text-info"%>
-        </div>
-        <div>
-          Email: 
-          <%= user.email %>
-        </div>
-        <div>
-          Admin:
-          <%= user.admin %>      
+        </h5>
+        <div class="card-body">
+          <div>
+            Email: 
+            <%= user.email %>
+          </div>
+          <div>
+            Admin:
+            <%= user.admin %>      
+          </div>
+          <div>
+            Task Count:
+            <%= user.tasks.count %>
+          </div>
         </div>
       </li>
     </div>
