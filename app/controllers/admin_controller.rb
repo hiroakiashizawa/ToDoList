@@ -6,7 +6,7 @@ class AdminController < ApplicationController
   end
 
   def users_show
-    @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 5)
   end
 
   def tasks_show

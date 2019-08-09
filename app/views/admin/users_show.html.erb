@@ -1,4 +1,7 @@
-<h1>All Users List</h1>
+<h3 class="mt-5">All Users List</h3>
+
+<%= will_paginate(@users, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 
 <ul class="mt-5">
   <% @users.each do |user| %>
