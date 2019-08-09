@@ -4,62 +4,13 @@
     <title>Todo</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag    'css/my-sheet.css', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <% if !admin? %>
-          <%= link_to 'Todo', root_path, method: :get, class:"navbar-brand" %>
-        <% else %>
-          <%= link_to 'Todo', admin_index_path, method: :get, class:"navbar-brand"%>
-        <% end%>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <div class="btn-group">
-              <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">ドロップダウンの切替</span>
-              </button>
-              <div class="dropdown-menu">
-                <div>
-                  <%= link_to "User", users_path, method: :get, class:"nav-link" if !guest?%>
-                </div>
-                <div>
-                  <%= link_to "Tasks", tasks_path, method: :get, class:"nav-link" %>
-                </div>
-                <div> 
-                  <%= link_to 'Search Task', search_tasks_tasks_path, method: :get, class:"text-success nav-link"%>
-                </div>
-              </div>
-            </div>
-          </ul>
-          <div class="media">
-            <img src="<%= asset_path "org_profile.jpeg" %>" class="mr-3 img-fluid" alt="sample-image">
-          </div>
-          <div class="d-flex align-items-center ml-3">
-              <% if admin? %>
-                <%= link_to "Admin" , admin_path, method: :get, class: "text-info" %>
-                <div>→→</div>
-                <%= link_to "ログアウト" , login_path, method: :delete %>
-              <% else %>
-                <% if current_user.name == 'guest' %>
-                  <div>Welcome Guest !! →→</div>
-                  <%= link_to "ユーザーログイン" , login_path, method: :get %>
-                <% else %>
-                  <div>Welcome <%= current_user.name %> !! →→</div>
-                  <%= link_to "ログアウト" , login_path, method: :delete %>
-                <% end %>
-              <% end %>
-            </div>
-        </div>
-      </nav>
+      <%= render 'head/header'%>
     </header>
     <div class="container-fluid">
       <div class="row">
@@ -76,7 +27,17 @@
             <%= yield %>
           </div>
           <div class="col-md-3"></div>
+        <div class="col-md-3 sidebar">
+          <%= render 'admin/index_left' if admin? %>
         </div>
+        <div class="col-md-6">
+          <%= render 'head/header_bar' if !admin?%>
+          <% flash.each do |message_type, message| %>
+            <%= content_tag(:div, message, class: "mt-3 alert alert-#{message_type}") %>
+          <% end %>
+          <%= yield %>
+        </div>
+        <div class="col-md-3"></div>
       </div>
     </div>
     <div class="fixed-bottom">

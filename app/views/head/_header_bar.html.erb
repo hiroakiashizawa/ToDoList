@@ -1,19 +1,19 @@
 <% if !guest? || !logged_in? %>
-  <div class="container-fluid">
+  <div class="container-fluid mt-2">
     <div class="row text-center mb-3">
       <div class="col-xl-4">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <%= link_to "Todo", tasks_path, class: "btn btn-primary" %>
+          <%= link_to "Todo", tasks_path, class: "btn btn-outline-secondary" %>
         </div>
       </div>
       <div class="col-xl-4">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <%= link_to "complete", completed_tasks_path, class: "btn btn-primary" %>
+          <%= link_to "complete", completed_tasks_path, class: "btn btn-outline-secondary" %>
         </div>
       </div>
       <div class="col-xl-4">
         <div class="btn-group" role="group" aria-label="Basic example">
-          <%= link_to "deleted", deleted_tasks_path, class: "btn btn-primary" %>
+          <%= link_to "deleted", deleted_tasks_path, class: "btn btn-outline-secondary" %>
         </div>
       </div>
     </div>

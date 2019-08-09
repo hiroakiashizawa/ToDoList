@@ -1,0 +1,80 @@
+<nav id="header" class="navbar navbar-expand-lg navbar-light text-light">
+  <% if !admin? %>
+    <%= link_to 'Todo', root_path, method: :get, class:"navbar-brand text-light" %>
+  <% else %>
+    <%= link_to 'Todo', admin_index_path, method: :get, class:"navbar-brand text-light"%>
+  <% end%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <div class="btn-group">
+        <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="sr-only">ドロップダウンの切替</span>
+        </button>
+        <div class="dropdown-menu">
+          <div>
+            <%= link_to "User", users_path, method: :get, class:"nav-link" if !guest?%>
+          </div>
+          <div>
+            <%= link_to "Tasks", tasks_path, method: :get, class:"nav-link" %>
+          </div>
+          <div> 
+            <%= link_to 'Search Task', search_tasks_tasks_path, method: :get, class:"text-success nav-link" if !admin? %>
+          </div>
+          <div>
+            <%= link_to 'Admin', search_tasks_tasks_path, method: :get, class:"text-success nav-link" if admin? %>
+          </div>
+        </div>
+      </div>
+    </ul>
+    <div class="media">
+      <img src="<%= asset_path "org_profile.jpeg" %>" class="mr-3 img-fluid" alt="sample-image">
+    </div>
+    <div class="d-flex align-items-center ml-3">
+      <% if admin? %>
+        <div>Logged in </div>
+        <%= link_to "Admin" , admin_path, method: :get, class: "text-success ml-1" %>
+        <div class="dropdown ml-4">
+          <button type="button" id="dropdown1"
+            class="btn-sm btn-primary dropdown-toggle"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false">
+            Menu
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div>
+            <%= link_to "ログアウト" , login_path, method: :delete, class: "text-danger" %>
+            </div>
+          </div>
+        </div>
+      <% else %>
+        <div>Logged in
+          <span class="font-weight-bold"><%= current_user.name %><span>
+        </div>
+        <div class="dropdown ml-4">
+          <button type="button" id="dropdown1"
+              class="btn-sm btn-primary dropdown-toggle"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
+            Menu
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div>
+              <% if current_user.name == 'guest' %>
+                <%= link_to "ユーザーログイン" , login_index_path, method: :get, class: "dropdown-item" %>
+              <% else %>
+                <%= link_to "ログアウト" , login_path, method: :delete, class: "text-danger dropdown-item" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</nav>
