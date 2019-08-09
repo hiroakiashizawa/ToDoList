@@ -10,7 +10,7 @@ class AdminController < ApplicationController
   end
 
   def tasks_show
-    @tasks = Task.all
+    @tasks = Task.all.paginate(page: params[:page], per_page: 5)
   end
 
   private

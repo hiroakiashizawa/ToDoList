@@ -1,5 +1,7 @@
 <h3>All Tasks List</h3>
 
+<%= will_paginate @tasks, class:"m-5"%>
+
 <ul class="tasks mt-5">
   <% @tasks.each do |task| %>
     <li>
@@ -14,3 +16,5 @@
     <div class='text-success mt-1 mb-2'>by <%= owner(task) %></div>
   <% end %>
 </ul>
+
+<%= will_paginate @tasks, class:"m-5"%>
