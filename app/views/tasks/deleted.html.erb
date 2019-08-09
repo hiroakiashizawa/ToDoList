@@ -1,29 +1,39 @@
+<%= will_paginate @tasks, class:"m-5"%>
+
 <ul class="tasks mt-5">
-  <% if @tasks %>
-    <% @tasks.each do |task| %>
+  <% @survey = @search_tasks || @tasks %>
+  <% if @survey %>
+    <% @survey.each do |task| %>
       <% if status(task) == 'deleted' %>
-        <li>
-          <input class="form-check-input" type="checkbox" value="">
-          <label class="form-check-label" for="defaultCheck1">
-          <span class="text-info"><%= task.title %></span>
-          <div class="btn-group">
-            <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="sr-only">ドロップダウンの切替</span>
-            </button>
-            <div class="dropdown-menu">
-              <div>
-                <%= link_to "Restore", pre_destroy_task_path(task), method: :patch, class: "text-success" %>
-              </div>
-              <div>
-                <%= link_to "Delete", task_path(task), method: :delete, class: "text-danger" %>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+          <div class="card-body">
+            <div class="">
+              <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info", remote: true %>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">ドロップダウンの切替</span>
+                </button>
+              <div class="dropdown-menu">
+                <div>
+                  <%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-danger" %>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div>
+                  <%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger" %>
+                </div>
               </div>
             </div>
+            </div>
+            <p class="card-text">
+              <%= render 'task_content', task: task %>
+            </p>
           </div>
-        </li>
-        <%= render 'task_content', task: task %>
+        </div>
       <% end %>
     <% end %>
   <% else %>
     <div>No Tasks</div>
   <% end %>
 </ul>
+
+<%= will_paginate @tasks, class:"m-5"%>

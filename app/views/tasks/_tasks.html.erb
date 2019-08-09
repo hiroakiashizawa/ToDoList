@@ -1,4 +1,5 @@
-<%= will_paginate @tasks, class:"m-5"%>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 
 <ul class="tasks mt-5">
   <% @survey = @search_tasks || @tasks %>
@@ -8,7 +9,7 @@
         <div class="card bg-light mb-3" style="max-width: 20rem;">
           <div class="card-body">
             <div class="">
-              <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
+              <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info", remote: true %>
               <div class="btn-group">
                 <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="sr-only">ドロップダウンの切替</span>
@@ -36,4 +37,5 @@
   <% end %>
 </ul>
 
-<%= will_paginate @tasks, class:"m-5"%>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>

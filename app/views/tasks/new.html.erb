@@ -1,22 +1,27 @@
-<%= form_with(model: @task, local: true) do |form| %>
-  <div class="field">
-    <%= form.text_field :title, autocomplete: 'off' %>
-  </div>
+<div class="text-center text-muted">
+  <%= form_with(model: @task, local: true) do |f| %>
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title, autocomplete: 'off' %>
+    </div>
 
-  <div class="field">
-    <%= form.text_area :content %>
-  </div>
+    <div class="field mr-4">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
 
-  <div class="field">
-    <%= form.date_field :timelimit %>
-  </div>
+    <div class="field">
+      <%= f.label :Limit %>
+      <%= f.date_field :timelimit %>
+    </div>
 
-  <span class="btn btn-sm">
-    <%= form.submit %>
-  </span>
-  <span>
-    <a href="/tasks" class="text-reset text-muted">cancel</a>
-  </span>
-<% end %>
+    <span class="btn btn-sm">
+      <%= f.submit "submit" %>
+    </span>
+    <span>
+      <a href="/tasks" class="text-reset text-muted">cancel</a>
+    </span>
+  <% end %>
+</div>
 
 <%= render 'tasks', task: @tasks %>
