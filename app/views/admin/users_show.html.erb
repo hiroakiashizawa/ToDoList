@@ -3,28 +3,24 @@
 <%= will_paginate(@users, class: "pagination justify-content-center text-muted m-5",
                   renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 
-<ul class="mt-5">
+<table class="table">
+  <tr>
+    <td>Name</td>
+    <td>Email</td>
+    <td>Admin</td>
+    <td>Task</td>
+  </tr>
   <% @users.each do |user| %>
-    <div class="card mb-3">
-      <li>
-        <h5 class="card-title ml-3 mt-3">
-          <%= link_to user.name, edit_user_path(user), class: "text-info"%>
-        </h5>
-        <div class="card-body">
-          <div>
-            Email: 
-            <%= user.email %>
-          </div>
-          <div>
-            Admin:
-            <%= user.admin %>      
-          </div>
-          <div>
-            Task Count:
-            <%= user.tasks.count %>
-          </div>
-        </div>
-      </li>
-    </div>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.admin %></td>
+      <td><%= user.tasks.count %></td>
+      <td><%= link_to 'edit', edit_user_path(user), class: "text-info" %></td>
+      <td><%= link_to 'Delete', user_path(user), method: :delete, class: "text-danger", data: { confirm: "You sure?" } %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
+
+<%= will_paginate(@users, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>

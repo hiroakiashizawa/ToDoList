@@ -3,27 +3,24 @@
 <%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
                   renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 
-<ul class="tasks mt-5">
+<table class="table">
+  <tr>
+    <td>Title</td>
+    <td>Content</td>
+    <td>Timalimit</td>
+    <td>Owner</td>
+  </tr>
   <% @tasks.each do |task| %>
-    <div class="card mb-3">
-      <li>
-        <h5 class="card-title ml-3 mt-3">
-          <li>
-            <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
-            <%= link_to "delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %>
-          </li>
-        </h5>
-      </li>
-      <div class="card-body">
-        <div class='text-muted mt-1 mb-2'><%= task.content %></div>
-        <div class='text-muted mt-1 mb-2'><%= task.timelimit %></div>
-        <div class='text-success mt-1 mb-2'>by <%= owner(task) %></div>
-      </div>
-    </div>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= task.timelimit %></td>
+      <td><%= owner(task) %></td>
+      <td><%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %></td>
+      <td><%= link_to "Delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %></td>
+    </tr>
   <% end %>
-</ul>
-
-<%= will_paginate @tasks, class:"m-5"%>
+</table>
 
 <%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
                   renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
