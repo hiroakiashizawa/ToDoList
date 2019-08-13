@@ -14,7 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'nokogiri', '>= 1.10.3'
 gem 'ffi', '>= 1.11.1'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'nio4r', '>= 2.4.0'
