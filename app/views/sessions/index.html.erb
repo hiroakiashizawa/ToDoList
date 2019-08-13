@@ -1,15 +1,23 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-md-4"></div>
-    <div class="col-md-offset-4">
-      <h2 class="mt-5">Welcome, Todo App create by Ashi</h2>
-      <div class="mt-5 ml-5">
-        <div>↓↓ ユーザ作成済み, 作成予定の方はこちら</div>
-        <%= button_to 'ユーザログイン', "/login", method: :get, class: "btn btn-outline-primary" %>
-      </div>
-      <div class="mt-5 ml-5">
-        <div>↓↓ 登録なしで早く使いたい方はこちら</div>
-        <%= button_to 'Guestとしてログイン', "/login/guest", method: :get, class: "btn btn-outline-secondary" %>
+    <div class="card col-md-offset-4">
+      <h2 class="card-header">
+        ユーザログイン
+      </h2>
+      <div class="card-body">
+        <div class="ml-5 mt-3">
+          <div>↓↓ ユーザ未登録の方はこちら</div>
+          <%= button_to 'ユーザ作成', "/users/new", method: :get, class: "btn btn-outline-primary" %>
+        </div>
+        <div class="ml-5 mt-5">
+          <div>↓↓ ユーザ登録済みの方はこちら</div>
+          <%= button_to 'ユーザログイン', "/login", method: :get, class: "btn btn-outline-primary" %>
+        </div>
+        <div class="mt-5 ml-5">
+          <div>↓↓ 登録なしで早く使いたい方はこちら</div>
+          <%= button_to 'Guestとしてログイン', "/login/guest", method: :get, class: "btn btn-outline-secondary" %>
+        </div>
       </div>
     </div>
   </div>

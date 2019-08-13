@@ -1,3 +1,6 @@
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+
 <ul class="tasks mt-5">
   <% @survey = @search_tasks || @tasks %>
   <% if @survey %>
@@ -13,11 +16,11 @@
                 </button>
               <div class="dropdown-menu">
                 <div>
-                  <%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-danger" %>
+                  <%= link_to "Complete", edit_completed_tasks_path(task), method: :patch, class: "text-danger" %>
                 </div>
                 <div class="dropdown-divider"></div>
                 <div>
-                  <%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger" %>
+                  <%= link_to "Delete", pre_destroy_tasks_path(task), method: :patch, class: "text-danger" %>
                 </div>
               </div>
             </div>
@@ -33,3 +36,6 @@
     <div>No Tasks</div>
   <% end %>
 </ul>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>

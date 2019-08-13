@@ -1,8 +1,16 @@
-<h3>User's profile</h3>
-<ul class="mt-5">
-  <div>
-    <div>Name : <%= link_to @user.name, edit_user_path(@user), class: "text-info"%></div>
-    
-    <div>Email : <%= @user.email %></div>
-  </div>
-</ul>
+<h2 class="mt-3">User's profile</h2>
+<table class="table table-striped">
+  <thead>
+    <tr class="text-bold">
+      <td>Name</td>
+      <td>Email</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.name %></td>
+      <td><%= @user.email %></td>
+      <td><%= link_to 'edit', edit_user_path(@user), class: "text-info" %></td>
+    </tr>
+  </tbody>
+</table>

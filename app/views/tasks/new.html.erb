@@ -1,27 +1,21 @@
-<div class="text-center text-muted">
-  <%= form_with(model: @task, local: true) do |f| %>
-    <div class="field">
-      <%= f.label :title %>
-      <%= f.text_field :title, autocomplete: 'off' %>
-    </div>
-
-    <div class="field mr-4">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-    </div>
-
-    <div class="field">
-      <%= f.label :Limit %>
-      <%= f.date_field :timelimit %>
-    </div>
-
-    <span class="btn btn-sm">
-      <%= f.submit "submit" %>
-    </span>
-    <span>
-      <a href="/tasks" class="text-reset text-muted">cancel</a>
-    </span>
+<h3 class="mt-3">New Task</h3>
+<table class="table text-center text-muted">
+  <%= form_with(scope: :task, url: tasks_path, local: true) do |f| %>
+    <tr>
+      <td><%= f.label :title %></td>
+      <td><%= f.text_field :title, autocomplete: 'off' %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :content %></td>
+      <td><%= f.text_area :content %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :Limit %></td>
+      <td><%= f.date_field :timelimit %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit "submit", class:"btn btn-sm btn-primary" %></td>
+      <td><%= link_to "cancel", tasks_path, class:"text-reset text-muted" %></td>
+    </tr>
   <% end %>
-</div>
-
-<%= render 'tasks', task: @tasks %>
+</table>
