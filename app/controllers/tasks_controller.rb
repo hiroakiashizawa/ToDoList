@@ -7,11 +7,9 @@ class TasksController < ApplicationController
   end
 
   def new
-    @tasks = task_common
   end
 
   def create
-    @tasks = task_common
     @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
@@ -27,7 +25,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tasks = task_common
     @task = Task.find(params[:id])
   end
 
@@ -63,7 +60,7 @@ class TasksController < ApplicationController
     is_deleted = @task.deleted
     if @task.update_attributes(deleted: !is_deleted)
       if status(@task) == 'deleted'
-        redirect_to deleted_tasks_path, flash: { success: "Success to destroy" }
+        redirect_to deleted_tasks_path, flash: { danger: "Success to destroy" }
       else
         redirect_to root_path, flash: { success: "Success to Restore!!" }
       end
@@ -72,14 +69,20 @@ class TasksController < ApplicationController
 
   def destroy
     if Task.find(params[:id]).destroy!
-      redirect_to deleted_tasks_path, flash: { success: "Task completelly destroy!!" }
+      redirect_to deleted_tasks_path, flash: { danger: "Task completelly destroy!!" }
     end
+  end
+
+  def search
+    @tasks = task_common
+    @search = @tasks.ransack(params[:q])
+    @search_tasks = @search.result
   end
 
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content, :timelimit, :complete, :user_id)
+      params.require(:task).permit(:title, :content, :timelimit, :completed, :deleted, :user_id)
     end
 
     def require_login

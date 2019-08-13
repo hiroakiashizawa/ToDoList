@@ -8,7 +8,7 @@ module SessionsHelper
     if session[:user_id]
       @current_user ||= User.find_by(id: session[:user_id])
     else
-      @current_user = User.find_by(name:"guest")
+      @current_user ||= User.find_by(id: 2)
     end
   end
 

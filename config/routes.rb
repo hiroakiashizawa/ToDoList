@@ -7,11 +7,11 @@ Rails.application.routes.draw do
   get 'users/new'
 
   resources :tasks do
-    get 'completed', on: :collection
-    patch 'edit_completed', on: :member
-    get 'deleted', on: :collection
-    patch 'pre_destroy', on: :member
-    get 'search_tasks', on: :collection
+    get 'completed' => 'tasks#completed', on: :collection
+    patch 'edit_completed' => 'tasks#edit_completed', on: :collection
+    get 'deleted' => 'tasks#deleted', on: :collection
+    patch 'pre_destroy' => 'tasks#pre_destroy', on: :collection
+    get 'search' => 'tasks#search', on: :collection
   end
 
   get '/login/index' => 'sessions#index'

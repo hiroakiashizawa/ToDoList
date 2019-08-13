@@ -6,7 +6,8 @@ module TasksHelper
   end
 
   def search_tasks
-    @search = current_user.tasks.all.ransack(params[:q])
+    @tasks = current_user.tasks.all.order(timelimit: 'DESC').where(completed: false, deleted: false).paginate(page: params[:page], per_page: 5)
+    @search = @tasks.ransack(params[:q])
     @search_tasks = @search.result
   end
 
