@@ -23,10 +23,10 @@
             <%= link_to "Tasks", tasks_path, method: :get, class:"nav-link" %>
           </div>
           <div> 
-            <%= link_to 'Search Task', search_tasks_tasks_path, method: :get, class:"text-success nav-link" if !admin? %>
+            <%= link_to 'Search Task', search_tasks_path, method: :get, class:"text-success nav-link" if !admin? %>
           </div>
           <div>
-            <%= link_to 'Admin', search_tasks_tasks_path, method: :get, class:"text-success nav-link" if admin? %>
+            <%= link_to 'Admin', admin_path, method: :get, class:"text-success nav-link" if admin? %>
           </div>
         </div>
       </div>
@@ -53,9 +53,8 @@
           </div>
         </div>
       <% else %>
-        <div>Logged in
-          <span class="font-weight-bold"><%= current_user.name %><span>
-        </div>
+        <div>Logged in</div>
+        <%= link_to current_user.name, users_path, method: :get, class:"nav-link font-weight-bold" %>
         <div class="dropdown ml-4">
           <button type="button" id="dropdown1"
               class="btn-sm btn-primary dropdown-toggle"

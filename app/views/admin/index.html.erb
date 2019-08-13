@@ -1,4 +1,4 @@
-<h3>Latest Update</h3>
+<h3 class="mt-5">Latest Update</h3>
 <table class="table">
   <tr>
     <td>Title</td>
@@ -14,4 +14,4 @@
   <% end %>
 </table>
 <h3 class="mt-5">Weekly Create Task Graf</h3>
-<%= line_chart @graf.group_by_day_of_week(:created_at, format: "%a").count %>
+<%= line_chart @graf.group_by_day_of_week(:created_at, format: "%a").count, xtitle: "Day", ytitle: "Count", suffix: "t", messages: {empty: "No data"}  %>
