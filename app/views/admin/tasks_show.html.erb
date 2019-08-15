@@ -1,0 +1,26 @@
+<h3 class="mt-5">All Tasks List</h3>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
+
+<table class="table">
+  <tr>
+    <td>Title</td>
+    <td>Content</td>
+    <td>Timalimit</td>
+    <td>Owner</td>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= task.timelimit %></td>
+      <td><%= owner(task) %></td>
+      <td><%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %></td>
+      <td><%= link_to "Delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>

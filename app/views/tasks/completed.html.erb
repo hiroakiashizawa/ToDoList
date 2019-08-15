@@ -1,0 +1,41 @@
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+
+<ul class="tasks mt-5">
+  <% @survey = @search_tasks || @tasks %>
+  <% if @survey %>
+    <% @survey.each do |task| %>
+      <% if status(task) == 'completed'%>
+        <div class="card bg-light mb-3" style="max-width: 20rem;">
+          <div class="card-body">
+            <div class="">
+              <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info", remote: true %>
+              <div class="btn-group">
+                <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="sr-only">ドロップダウンの切替</span>
+                </button>
+              <div class="dropdown-menu">
+                <div>
+                  <%= link_to "Complete", edit_completed_tasks_path(task), method: :patch, class: "text-danger" %>
+                </div>
+                <div class="dropdown-divider"></div>
+                <div>
+                  <%= link_to "Delete", pre_destroy_tasks_path(task), method: :patch, class: "text-danger" %>
+                </div>
+              </div>
+            </div>
+            </div>
+            <p class="card-text">
+              <%= render 'task_content', task: task %>
+            </p>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  <% else %>
+    <div>No Tasks</div>
+  <% end %>
+</ul>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>

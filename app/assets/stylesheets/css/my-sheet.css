@@ -1,0 +1,11 @@
+body {
+  font-family: "メイリオ", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+#header {
+  background: #ff9000;
+}

@@ -1,28 +1,23 @@
 class TasksController < ApplicationController
+  include Common
+  before_action :require_login
 
   def index
-    @tasks = Task.all
-  end
-  
-  def complete
+    @tasks = task_common
   end
 
   def new
-    @tasks = Task.all
-    @task = Task.new
   end
 
   def create
-    @admin = User.find_by(name:"admin")
-    @tasks = Task.all
-    @task = @admin.tasks.build(tasks_params)
+    @task = current_user.tasks.build(tasks_params)
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to '/tasks', notice: 'Task was successfully created.' }
+        format.html { redirect_to root_path , flash: { success: "Task was successfully created" } }
         format.json { render :index, status: :created, location: @task }
       else
-        flash.now[:error] = "error"
+        flash.now[:danger] = "Create task was failed"
         format.html { render 'new' }
         format.json { render json: @task.errors }
       end
@@ -30,29 +25,70 @@ class TasksController < ApplicationController
   end
 
   def edit
-    @tasks = Task.all
     @task = Task.find(params[:id])
   end
 
   def update
-    @tasks = Task.all
     @task = Task.find(params[:id])
     if @task.update_attributes(tasks_params)
-      #flash[:success] = "task updated"
-      redirect_to root_path
-    else
-      render 'edit'
+      redirect_to root_path, flash: { success: "Success to be updated" }
+    end
+  end
+
+  def completed
+    @tasks = task_common('completed')
+  end
+
+  def edit_completed
+    @task = Task.find(params[:id])
+    is_completed = @task.completed
+    if @task.update_attributes(completed: !is_completed)
+      if status(@task) == 'completed'
+        redirect_to completed_tasks_path, flash: { success: "Success to change completed" }
+      else
+        redirect_to root_path, flash: { success: "Success to change incompleted" }
+      end
+    end
+  end
+
+  def deleted
+    @tasks = task_common('deleted')
+  end
+
+  def pre_destroy
+    @task = Task.find(params[:id])
+    is_deleted = @task.deleted
+    if @task.update_attributes(deleted: !is_deleted)
+      if status(@task) == 'deleted'
+        redirect_to deleted_tasks_path, flash: { danger: "Success to destroy" }
+      else
+        redirect_to root_path, flash: { success: "Success to Restore!!" }
+      end
     end
   end
 
   def destroy
-    Task.find(params[:id]).destroy
-    redirect_to root_path
+    if Task.find(params[:id]).destroy!
+      redirect_to deleted_tasks_path, flash: { danger: "Task completelly destroy!!" }
+    end
+  end
+
+  def search
+    @tasks = task_common
+    @search = @tasks.ransack(params[:q])
+    @search_tasks = @search.result
   end
 
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content)
+      params.require(:task).permit(:title, :content, :timelimit, :completed, :deleted, :user_id)
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "Please login!"
+        redirect_to login_path
+      end
     end
 end

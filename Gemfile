@@ -14,14 +14,31 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'nokogiri', '>= 1.10.3'
 gem 'ffi', '>= 1.11.1'
-gem 'bootstrap', '~> 4.1.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'jquery-rails'
+gem 'bcrypt', '~> 3.1', '>= 3.1.13'
+gem 'nio4r', '>= 2.4.0'
+gem 'rails-controller-testing'
 
+# 検索機能
+gem 'ransack'
+
+# ページネーション機能
+gem 'bootstrap-sass'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
+# グラフ作成
+gem "chartkick"
+gem "groupdate"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.7.0'
   gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'pry-doc'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -30,6 +47,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'spring-commands-rspec'
+  gem 'bullet'
 end
 
 group :test do

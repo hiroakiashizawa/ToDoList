@@ -1,0 +1,21 @@
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-offset-4">
+      <h1 class="mt-5">Log in</h1>
+      <%= form_with(scope: :session, url:login_path, local: true) do |form| %>
+
+        <%= form.label :email %>
+        <%= form.email_field :email, class: 'form-control' %>
+
+        <%= form.label :password %>
+        <%= form.password_field :password, class: 'form-control' %>
+
+        <%= form.submit "Log in", class: "btn btn-default" %>
+
+      <% end%>
+      <%= link_to "make user", new_user_path, class: "text-info" %>
+      <div class="col-md-4"></div>
+    </div>
+  </div>
+</div>

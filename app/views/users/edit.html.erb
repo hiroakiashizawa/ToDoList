@@ -1,0 +1,22 @@
+<table class="table table-borderd">
+  <h3>Edit User</h3>
+  <%= form_with(model: @user, local: true) do |form| %>
+    <tr class="field">
+      <td>Name</td> 
+      <td><%= form.text_field :name %></td>
+    </tr>
+
+    <tr class="field">
+      <td>Email</td> 
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <td class="btn btn-sm">
+        <%= form.submit "Save changes" %>
+      </td>
+      <td>
+        <a href="/users" class="text-reset text-muted">cancel</a>
+      </td>
+    </tr>
+  <% end %>
+</table>

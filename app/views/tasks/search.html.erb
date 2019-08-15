@@ -1,0 +1,32 @@
+<h1>タスク検索</h1>
+<table class="table">
+  <%= search_form_for(@search, url:search_tasks_path) do |f| %>
+    <thead></thead>
+    <tbody>
+      <tr>
+        <td><%= f.label :title, "title" %></td>
+        <td><%= f.search_field :title_cont, id: "search_title", class: "mr-sm-2"%></td>
+        <td><%= f.label :content, "content" %></td>
+        <td><%= f.search_field :content_cont, class: "mr-sm-2 mr-5" %></td>
+      </tr>
+      <tr>
+        <td><%= f.label :created_at_gteq, "From" %></td>
+        <td><%= f.date_field :created_at_gteq %></td>
+        <td><%= f.label :created_at_lteq, "to here" %></td>
+        <td><%= f.date_field :created_at_lteq %></td>
+      </tr>
+      <tr>
+        <td><%= f.submit "Search",  class:"btn btn-sm my-2 my-sm-0" %></td>
+        <td><%= link_to "Reset", search_tasks_path, method: :get, class:"btn btn-default text-muted"%></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+
+<%= render 'tasks', task: @tasks %>
+
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>

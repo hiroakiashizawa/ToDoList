@@ -1,18 +1,17 @@
-<%= render 'tasks', task: @tasks %>
-
-<%= form_with(model: @task, local: true) do |form| %>
-  <div class="field">
-    <%= form.text_field :title, autocomplete: 'off' %>
-  </div>
-
-  <div class="field">
-    <%= form.text_area :content %>
-  </div>
-
-  <span class="btn btn-sm">
-    <%= form.submit "Save changes" %>
-  </span>
-  <span>
-    <a href="/tasks" class="text-reset text-muted">cancel</a>
-  </span>
-<% end %>
+<h3 class="mt-3">Edit Task</h3>
+<table class="table text-center text-muted">
+  <%= form_with(scope: :task, url: edit_task_path, local: true) do |f| %>
+    <tr>
+      <td>Title</td>
+      <td><%= f.text_field :title, autocomplete: 'off', class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td>Content </td>
+      <td><%= f.text_area :content, class: 'form-control' %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit "Save", method: :patch, class: 'btn btn-sm btn-primary form-control' %></td>
+      <td><%= link_to 'cancel', tasks_path, class:"text-reset text-muted" %></td>
+    </tr>
+  <% end %>
+</table>
