@@ -2,15 +2,16 @@ class AdminController < ApplicationController
   before_action :require_login, :require_admin
 
   def index
-    @tasks = Task.all
+    @tasks = Task.all.order(updated_at: 'DESC').paginate(page: params[:page], per_page: 5)
+    @graf = Task.all
   end
 
   def users_show
-    @users = User.all
+    @users = User.all.paginate(page: params[:page], per_page: 10)
   end
 
   def tasks_show
-    @tasks = Task.all.paginate(page: params[:page], per_page: 5)
+    @tasks = Task.all.paginate(page: params[:page], per_page: 10)
   end
 
   private

@@ -5,3 +5,7 @@ body {
 ul {
   list-style: none;
 }
+
+#header {
+  background: #ff9000;
+}

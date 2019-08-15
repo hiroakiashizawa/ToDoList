@@ -1,25 +1,22 @@
-<h3>Edit User</h3>
-<%= form_with(model: @user, local: true) do |form| %>
-  <div class="field">
-    Name : 
-    <%= form.text_field :name %>
-  </div>
+<table class="table table-borderd">
+  <h3>Edit User</h3>
+  <%= form_with(model: @user, local: true) do |form| %>
+    <tr class="field">
+      <td>Name</td> 
+      <td><%= form.text_field :name %></td>
+    </tr>
 
-  <div class="field">
-    Email : 
-    <%= form.text_field :email %>
-  </div>
-
-  <span class="btn btn-sm">
-    <%= form.submit "Save changes" %>
-  </span>
-  <span>
-    <a href="/users" class="text-reset text-muted">cancel</a>
-  </span>
-  <article>
-    <button class="btn btn-default">
-      <%= link_to "delete user", @user, method: :delete, class: "text-danger", data: { confirm: "This User will Completly Delete, Are you sure?" } %>
-    </button>
-  </article>
-  
-<% end %>
+    <tr class="field">
+      <td>Email</td> 
+      <td><%= form.text_field :email %></td>
+    </tr>
+    <tr>
+      <td class="btn btn-sm">
+        <%= form.submit "Save changes" %>
+      </td>
+      <td>
+        <a href="/users" class="text-reset text-muted">cancel</a>
+      </td>
+    </tr>
+  <% end %>
+</table>

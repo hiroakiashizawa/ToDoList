@@ -1,9 +1,17 @@
-<h1>管理者コンソール</h1>
-<p>作成途中です</p>
-<p>レコードを検索できるようにしたい</p>
-<h2>週次タスク一覧</h2>
-
-<div id="graf_select"><%= button_to 'クリック', admin_graf_select_path, method: :get, remote: true %></div>
-
-<%= render(:partial => 'admin/graf_1') if session[:graf] == 1 %>
-<%= render(:partial => 'admin/graf_2') unless session[:graf] == 1 %>
+<h3 class="mt-5">Latest Update</h3>
+<table class="table">
+  <tr>
+    <td>Title</td>
+    <td>Updated</td>
+    <td>Owner</td>
+  </tr>
+  <% @tasks.each do |task| %>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.updated_at %></td>
+      <td><%= owner(task)%></td>
+    </tr>
+  <% end %>
+</table>
+<h3 class="mt-5">Weekly Create Task Graf</h3>
+<%= line_chart @graf.group_by_day_of_week(:created_at, format: "%a").count, xtitle: "Day", ytitle: "Count", suffix: "t", messages: {empty: "No data"}  %>

@@ -1,20 +1,26 @@
-<h3>All Tasks List</h3>
+<h3 class="mt-5">All Tasks List</h3>
 
-<%= will_paginate @tasks, class:"m-5"%>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
 
-<ul class="tasks mt-5">
+<table class="table">
+  <tr>
+    <td>Title</td>
+    <td>Content</td>
+    <td>Timalimit</td>
+    <td>Owner</td>
+  </tr>
   <% @tasks.each do |task| %>
-    <li>
-      <input class="form-check-input" type="checkbox" value="">
-      <label class="form-check-label" for="defaultCheck1">
-      <span><%= task.id %>. </span>
-      <%= link_to task.title, edit_task_path(task), method: :get, class: "text-info" %>
-      <%= link_to "delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %>
-    </li>
-    <div class='text-muted mt-1 mb-2'><%= task.content %></div>
-    <div class='text-muted mt-1 mb-2'><%= task.timelimit %></div>
-    <div class='text-success mt-1 mb-2'>by <%= owner(task) %></div>
+    <tr>
+      <td><%= task.title %></td>
+      <td><%= task.content %></td>
+      <td><%= task.timelimit %></td>
+      <td><%= owner(task) %></td>
+      <td><%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %></td>
+      <td><%= link_to "Delete", task, method: :delete, class: "text-danger", data: { confirm: "You sure?" } %></td>
+    </tr>
   <% end %>
-</ul>
+</table>
 
-<%= will_paginate @tasks, class:"m-5"%>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
+                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
