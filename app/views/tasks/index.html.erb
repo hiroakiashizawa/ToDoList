@@ -1,7 +1,5 @@
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5", renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
-
-<%= link_to '+ Add Task', new_task_path, class:"text-muted text-center" %>
+<%= will_paginate @tasks if @tasks.present? %>
 
 <%= render 'tasks', task: @tasks %>
 
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5", renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+<%= will_paginate @tasks if @tasks.present? %>
