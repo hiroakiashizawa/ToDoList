@@ -57,15 +57,12 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.14.3, < 2)
       sassc-rails (>= 2.0.0)
-    bootstrap-sass (3.4.1)
-      autoprefixer-rails (>= 5.2.1)
-      sassc (>= 2.0.0)
     builder (3.2.3)
     bullet (6.0.1)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.11)
     byebug (11.0.1)
-    capybara (3.27.0)
+    capybara (3.28.0)
       addressable
       mini_mime (>= 0.1.3)
       nokogiri (~> 1.8)
@@ -127,10 +124,10 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.11.3)
-    msgpack (1.3.0)
+    msgpack (1.3.1)
     mysql2 (0.5.2)
     nio4r (2.4.0)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     popper_js (1.14.5)
     pry (0.12.2)
@@ -167,7 +164,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.0.4)
+    rails-html-sanitizer (1.2.0)
       loofah (~> 2.2, >= 2.2.2)
     railties (5.2.3)
       actionpack (= 5.2.3)
@@ -260,8 +257,8 @@ GEM
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
     will_paginate (3.1.7)
-    will_paginate-bootstrap (1.0.2)
-      will_paginate (>= 3.0.3)
+    will_paginate-bootstrap4 (0.2.2)
+      will_paginate (~> 3.0, >= 3.0.0)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.20)
@@ -273,7 +270,6 @@ DEPENDENCIES
   bcrypt (~> 3.1, >= 3.1.13)
   bootsnap (>= 1.1.0)
   bootstrap (~> 4.3.1)
-  bootstrap-sass
   bullet
   byebug
   capybara (>= 2.15)
@@ -307,7 +303,7 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
   will_paginate
-  will_paginate-bootstrap
+  will_paginate-bootstrap4
 
 RUBY VERSION
    ruby 2.6.3p62

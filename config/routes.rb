@@ -8,9 +8,9 @@ Rails.application.routes.draw do
 
   resources :tasks do
     get 'completed' => 'tasks#completed', on: :collection
-    patch 'edit_completed' => 'tasks#edit_completed', on: :collection
+    patch 'edit_completed' => 'tasks#edit_completed', on: :member
     get 'deleted' => 'tasks#deleted', on: :collection
-    patch 'pre_destroy' => 'tasks#pre_destroy', on: :collection
+    patch 'pre_destroy' => 'tasks#pre_destroy', on: :member
     get 'search' => 'tasks#search', on: :collection
   end
 

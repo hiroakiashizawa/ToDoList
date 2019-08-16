@@ -17,16 +17,19 @@
         <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <%= render 'admin/index_left' if admin? %>
         </div>
-        <div class="col-md-10 mt-3 row">
+        <div class="col-md-10 mt-3">
           <%= render 'head/header_bar' if !admin?%>
-          <div class="col-md-3"></div>
-          <div class="col-md-auto">
-            <% flash.each do |message_type, message| %>
-              <%= content_tag(:div, message, class: "mt-3 alert alert-#{message_type}") %>
-            <% end %>
-            <%= yield %>
+          <div class="container-fluid row">
+            <div class="col-md-3"></div>
+            <div class="col-md-auto">
+              <% flash.each do |message_type, message| %>
+                <%= content_tag(:div, message, class: "mt-3 alert alert-#{message_type}") %>
+              <% end %>
+              <%= yield %>
+            </div>
+            <div class="col-md-2 navbar nav navbar-fixed-right">
+            </div>
           </div>
-          <div class="col-md-3"></div>
         </div>
       </div>
     </div>

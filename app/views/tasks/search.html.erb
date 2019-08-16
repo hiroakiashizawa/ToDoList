@@ -1,6 +1,6 @@
 <h1>タスク検索</h1>
 <table class="table">
-  <%= search_form_for(@search, url:search_tasks_path) do |f| %>
+  <%= search_form_for(@search, url:search_tasks_path, remote: true) do |f| %>
     <thead></thead>
     <tbody>
       <tr>
@@ -23,10 +23,8 @@
   <% end %>
 </table>
 
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
-                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5") if @tasks.present? %>
 
 <%= render 'tasks', task: @tasks %>
 
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5",
-                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)  if @tasks.present? %>
+<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5")  if @tasks.present? %>

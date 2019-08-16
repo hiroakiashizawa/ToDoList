@@ -1,7 +1,6 @@
-<h3 class="mt-5">All Users List</h3>
+<h3 class="mt-5 mb-3">All Users List</h3>
 
-<%= will_paginate(@users, class: "pagination justify-content-center text-muted m-5",
-                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
+<%= will_paginate @users %>
 
 <table class="table">
   <tr>
@@ -22,5 +21,4 @@
   <% end %>
 </table>
 
-<%= will_paginate(@users, class: "pagination justify-content-center text-muted m-5",
-                  renderer: WillPaginate::ActionView::Bootstrap4LinkRenderer)%>
+<%= will_paginate @users %>
