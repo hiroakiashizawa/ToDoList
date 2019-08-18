@@ -1,0 +1,20 @@
+<div>
+  <table class="table mt-2">
+    <tr>
+      <td>Title</td>
+      <td>Content</td>
+      <td>Timalimit</td>
+      <td>Completed</td>
+      <td>Deleted</td>
+    </tr>
+    <% task.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <td><%= task.content %></td>
+        <td><%= task.timelimit %></td>
+        <td><%= task.completed %></td>
+        <td><%= task.deleted %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>

@@ -23,8 +23,8 @@
   <% end %>
 </table>
 
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5") if @tasks.present? %>
+<%= will_paginate(@search_tasks, class: "pagination justify-content-center text-muted m-5") if @search_tasks.present? %>
 
-<%= render 'tasks', task: @tasks %>
+<%= render 'search_tasks', task: @search_tasks %>
 
-<%= will_paginate(@tasks, class: "pagination justify-content-center text-muted m-5")  if @tasks.present? %>
+<%= will_paginate(@search_tasks, class: "pagination justify-content-center text-muted m-5")  if @search_tasks.present? %>
