@@ -75,12 +75,15 @@ class TasksController < ApplicationController
   end
 
   def search
-    @tasks = task_common('all')
-    @search = @tasks.ransack(params[:q])
+    @tasks = current_user.tasks.all
+    @search = Task.ransack(params[:q])
     @search_tasks = @search.result(distinct: true)
 
-    if params[:q].present?
-      render json:  @search.select("id").map { |e| e.id }.to_json
+    respond_to do |format|
+      format.json {
+        render json: @search_tasks
+      }
+      format.html
     end
   end
 

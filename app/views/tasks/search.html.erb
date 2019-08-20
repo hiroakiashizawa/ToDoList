@@ -1,6 +1,6 @@
 <h1>タスク検索</h1>
 <table class="table">
-  <%= search_form_for(@search, url:search_tasks_path, remote: true) do |f| %>
+  <%= search_form_for(@search, url: search_tasks_path, remote: true, method: :post ) do |f| %>
     <thead></thead>
     <tbody>
       <tr>
@@ -23,8 +23,4 @@
   <% end %>
 </table>
 
-<%= will_paginate(@search_tasks, class: "pagination justify-content-center text-muted m-5") if @search_tasks.present? %>
-
 <%= render 'search_tasks', task: @search_tasks %>
-
-<%= will_paginate(@search_tasks, class: "pagination justify-content-center text-muted m-5")  if @search_tasks.present? %>

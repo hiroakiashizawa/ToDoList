@@ -12,8 +12,6 @@ Rails.application.routes.draw do
       get 'deleted' => 'tasks#deleted'
       get 'search' => 'tasks#search'
       post 'search' => 'tasks#search'
-      get 'test' => 'tasks#test'
-      post 'test' => 'tasks#test'
     end
     
     member do
