@@ -1,4 +1,5 @@
 class TasksController < ApplicationController
+    
   include Common
   before_action :require_login
 
@@ -74,9 +75,16 @@ class TasksController < ApplicationController
   end
 
   def search
-    @tasks = task_common
-    @search = @tasks.ransack(params[:q])
-    @search_tasks = @search.result
+    @tasks = current_user.tasks.all
+    @search = Task.ransack(params[:q])
+    @search_tasks = @search.result(distinct: true)
+
+    respond_to do |format|
+      format.json {
+        render json: @search_tasks
+      }
+      format.html
+    end
   end
 
   private

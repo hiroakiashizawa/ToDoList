@@ -1,34 +1,29 @@
-<ul class="tasks mt-5">
-  <% @tasks.each do |task| %>
-    <% if !task.completed && !task.deleted %>
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
-        <div class="card-body">
-          <div>
-            <%= task.title %>
-            <div class="btn-group">
-              <button type="button" class="btn btn-success btn-sm dropdown-toggle dropdown-toggle-split " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="sr-only">ドロップダウンの切替</span>
-              </button>
-            <div class="dropdown-menu">
-              <div>
-                <%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %>
-              </div>
-              <div class="dropdown-divider"></div>
-              <div>
-                <%= link_to "Complete", edit_completed_tasks_path(task), method: :patch, class: "text-danger" %>
-              </div>
-              <div class="dropdown-divider"></div>
-              <div>
-                <%= link_to "Delete", pre_destroy_tasks_path(task), method: :patch, class: "text-danger" %>
-              </div>
-            </div>
-          </div>
-          </div>
-          <p class="card-text">
-            <%= render 'task_content', task: task %>
-          </p>
-        </div>
-      </div>
+<div>
+  <span>
+    <%= button_to '+ New Task', new_task_path, class:"btn btn-bg btn-primary", method: :get %>
+  </span>
+  <table class="table mt-2">
+    <thead>
+      <tr>
+        <td><h3>Task List</h3></td>
+      </tr>
+    </thead>
+    <tr>
+      <td>Title</td>
+      <td>Content</td>
+      <td>Timalimit</td>
+    </tr>
+    <% @tasks.each do |task| %>
+      <% if status(task) == 'neutral' %>
+        <tr>
+          <td><%= task.title %></td>
+          <td><%= task.content %></td>
+          <td><%= task.timelimit %></td>
+          <td><%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %></td>
+          <td><%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-success" %></td>
+          <td><%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger", data: { confirm: "Are you sure?" } %></td>
+        </tr>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </table>
+</div>

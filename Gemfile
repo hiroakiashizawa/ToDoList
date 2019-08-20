@@ -24,9 +24,8 @@ gem 'rails-controller-testing'
 gem 'ransack'
 
 # ページネーション機能
-gem 'bootstrap-sass'
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate-bootstrap4'
 
 # グラフ作成
 gem "chartkick"
