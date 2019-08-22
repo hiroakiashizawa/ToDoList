@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'nio4r', '>= 2.4.0'
 gem 'rails-controller-testing'
+gem 'dotenv-rails'
 
 # 検索機能
 gem 'ransack'
@@ -30,6 +31,9 @@ gem 'will_paginate-bootstrap4'
 # グラフ作成
 gem "chartkick"
 gem "groupdate"
+
+# LINEbot連携
+gem 'line-bot-api'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
