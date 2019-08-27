@@ -20,6 +20,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :projects
+
   get '/login/index' => 'sessions#index'
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
