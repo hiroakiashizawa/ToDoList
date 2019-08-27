@@ -29,4 +29,6 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#index'
   get '/admin/users' => 'admin#users_show'
   get '/admin/tasks' => 'admin#tasks_show'
+
+  post '/callback' => 'linebot#callback'
 end
