@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_121530) do
+ActiveRecord::Schema.define(version: 2019_08_28_141418) do
 
   create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "project_name"
     t.bigint "user_id"
-    t.bigint "task_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["task_id"], name: "index_projects_on_task_id"
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -31,6 +29,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_121530) do
     t.datetime "timelimit"
     t.boolean "completed", default: false, null: false
     t.boolean "deleted", default: false, null: false
+    t.bigint "project_id"
+    t.index ["project_id"], name: "index_tasks_on_project_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_121530) do
     t.boolean "admin"
   end
 
-  add_foreign_key "projects", "tasks"
   add_foreign_key "projects", "users"
+  add_foreign_key "tasks", "projects"
   add_foreign_key "tasks", "users"
 end
