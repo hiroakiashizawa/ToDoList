@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :require_login
 
   def index
     @projects = current_user.projects.all
@@ -17,23 +18,39 @@ class ProjectsController < ApplicationController
       else
         flash.now[:danger] = "Create project was failed"
         format.html { render 'new' }
-        format.js { rneder json: @project.errors }
+        format.js { reeder json: @project.errors }
       end
     end 
   end
 
   def edit
+    @project = Project.find_by(params[:id])
   end
 
   def update
+    @project = Project.find_by(params[:id])
+
+    if @project.update_attributes(project_params)
+      redirect_to projects_path, flash: { success: "Project was successfully updated!!" }
+    end
   end
 
   def destroy
+    if @project = Project.find_by(params[:id]).destroy!
+      redirect_to projects_path, flash: { danger: "Task completelly destroy!!" }
+    end
   end
 
   private
 
     def project_params
       params.require(:projects).permit(:project_name, :user_id)
+    end
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "Please login!"
+        redirect_to login_path
+      end
     end
 end
