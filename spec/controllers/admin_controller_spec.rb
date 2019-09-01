@@ -15,7 +15,7 @@ RSpec.describe AdminController, type: :controller do
       it "responds successfully" do
         log_in(@user_admin)
         get :index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -24,7 +24,7 @@ RSpec.describe AdminController, type: :controller do
       it "responds failly" do
         log_in(@user_not_admin)
         get :index
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe AdminController, type: :controller do
 
       it "responds failly" do
         get :index
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 

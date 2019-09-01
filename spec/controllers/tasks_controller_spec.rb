@@ -12,7 +12,7 @@ RSpec.describe TasksController, type: :controller do
       it "responds successfully" do
         log_in(user)
         get :index
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -20,7 +20,7 @@ RSpec.describe TasksController, type: :controller do
 
       it "responds not successfully" do
         get :index
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
@@ -33,7 +33,7 @@ RSpec.describe TasksController, type: :controller do
       it "responds successfully" do
         log_in(user)
         get :completed
-        expect(response).to be_success
+        expect(response).to be_successful
       end  
     end
     
@@ -41,7 +41,7 @@ RSpec.describe TasksController, type: :controller do
 
       it "responds not successfully" do
         get :completed
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
@@ -54,7 +54,7 @@ RSpec.describe TasksController, type: :controller do
       it "responds successfully" do
         log_in(user)
         get :new
-        expect(response).to be_success
+        expect(response).to be_successful
       end
     end
 
@@ -62,7 +62,7 @@ RSpec.describe TasksController, type: :controller do
 
       it "responds not successfully" do
         get :new
-        expect(response).not_to be_success
+        expect(response).not_to be_successful
       end
     end
 
@@ -203,35 +203,40 @@ RSpec.describe TasksController, type: :controller do
     end
   end
 
-  # describe "DELETE #destroy" do
+  describe "DELETE #destroy" do
 
-  #   context "when logged-in" do
+    before do
+      @task = FactoryBot.create(:task)
+    end
 
-  #     it "successes to delete a task" do
-  #       log_in(user)
-  #       expect {
-  #         delete :destroy, params: { id: task.id }
-  #       }.to change{ user.tasks.count }.by(-1)
-  #     end
+    context "when logged-in" do
 
-  #     it "redirects to tasks/index page" do
-  #       log_in(user)
-  #       delete :destroy, params: { id: task.id }
-  #       expect(response).to redirect_to deleted_tasks_path
-  #     end
-  #   end
+      it "successes to delete a task" do
+        log_in(user)
+        expect {
+          delete :destroy, params: { id: @task.id , task: @task }
+        }.to change{ Task.count }.by(-1)
+      end
 
-  #   context "when not logged-in" do
-    
-  #     it "fails to delete task" do
-  #       delete :destroy, params: { id: task.id }
-  #       expect(task).to eq nil
-  #     end
+      it "redirects to tasks/index page" do
+        log_in(user)
+        delete :destroy, params: { id: @task.id, task: @task }
+        expect(response).to redirect_to deleted_tasks_path
+      end
+    end
 
-  #     it "redirects to login page" do
-  #       delete :destroy, params: { id: task.id }
-  #       expect(response).to redirect_to '/login'
-  #     end
-  #   end
-  # end
+    context "when not logged-in" do
+  
+      it "fails to delete task" do
+        expect {
+          delete :destroy, params: { id: @task.id }
+        }.to change{ user.tasks.count }.by(0)
+      end
+
+      it "redirects to login page" do
+        delete :destroy, params: { id: @task.id }
+        expect(response).to redirect_to '/login'
+      end
+    end
+  end
 end
