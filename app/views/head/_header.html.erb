@@ -22,6 +22,9 @@
           <div>
             <%= link_to "Tasks", tasks_path, method: :get, class:"nav-link" %>
           </div>
+          <div>
+            <%= link_to "Project", projects_path, method: :get, class:"nav-link" %>
+          </div>
           <div> 
             <%= link_to 'Search Task', search_tasks_path, method: :get, class:"text-success nav-link" if !admin? %>
           </div>

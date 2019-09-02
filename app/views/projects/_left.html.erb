@@ -1,0 +1,13 @@
+<nav class="sidebar mt-5">
+  <div class="sidebar-sticky">
+    <h3>Projects</h3>
+  </div>
+  <ul class="nav flex-column list-unstyled navbar-fixed-left" data-spy="affix" data-offset-top="205">
+    <% @user_project.each do |p| %>
+      <li class="nav-item">
+        <%= link_to "#{p.project_name}", edit_project_path(p), class:"text-muted" %>
+        <span class="sr-only">(current)</span>
+      </li>
+    <% end %>
+  </ul>
+</nav>

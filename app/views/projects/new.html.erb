@@ -1,10 +1,10 @@
 <table class="table">
+  <%= form_with(scope: :projects, url: projects_path, method: :post, local: true) do |p| %>
     <thead>
       <tr>
-        <td>New Project</td>
+        <td><h3>New Project</h3></td>
       </tr>
     </thead>
-  <%= form_with(scope: :projects, url: projects_path, method: :post, local: true) do |p| %>
     <tbody>
       <tr>
         <td><%= p.label :project_name %></td>

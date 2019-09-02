@@ -24,11 +24,11 @@ class ProjectsController < ApplicationController
   end
 
   def edit
-    @project = Project.find_by(params[:id])
+    @project = Project.find(params[:id])
   end
 
   def update
-    @project = Project.find_by(params[:id])
+    @project = Project.find(params[:id])
 
     if @project.update_attributes(project_params)
       redirect_to projects_path, flash: { success: "Project was successfully updated!!" }
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def destroy
-    if @project = Project.find_by(params[:id]).destroy!
+    if @project = Project.find(params[:id]).destroy!
       redirect_to projects_path, flash: { danger: "Task completelly destroy!!" }
     end
   end

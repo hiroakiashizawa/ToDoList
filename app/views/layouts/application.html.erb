@@ -16,6 +16,7 @@
       <div class="row" style="height: 100%;">
         <div class="col-md-2 d-none d-md-block bg-light sidebar">
           <%= render 'admin/index_left' if admin? %>
+          <%= render 'projects/left' if !admin? %>
         </div>
         <div class="col-md-10 mt-3">
           <%= render 'head/header_bar' if !admin?%>
