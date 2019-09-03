@@ -10,7 +10,7 @@ RSpec.describe UsersController, type: :controller do
     it "responds successfully" do
       log_in(user)
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

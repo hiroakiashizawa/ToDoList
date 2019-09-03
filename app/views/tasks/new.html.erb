@@ -18,6 +18,12 @@
       <td><%= f.date_field :timelimit %></td>
     </tr>
     <tr>
+      <%= form_with(model: @projects) do |p| %>
+        <td><%= p.label :Project %></td>
+        <td><%= p.select :project_id, Project.all.map {|project| [ project.project_name, project.id ]}%></td>
+      <% end %>
+    </tr>
+    <tr>
       <td><%= f.submit "submit", class:"btn btn-sm btn-primary" %></td>
       <td><%= link_to "cancel", tasks_path, class:"text-reset text-muted" %></td>
     </tr>

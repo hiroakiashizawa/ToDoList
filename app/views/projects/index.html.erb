@@ -1,0 +1,16 @@
+<%= link_to "+ New Project", new_project_path, class:"btn btn-bg btn-success" %>
+
+<table class="table mt-2">
+  <tbody>
+    <tr>
+      <td><h3>Project Name</h3></td>
+    </tr>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.project_name %></td>
+        <td><%= link_to "Edit", edit_project_path(p), method: :get %></td>
+        <td><%= link_to "Delete", project_path(p), method: :delete, class:"text-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

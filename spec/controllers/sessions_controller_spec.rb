@@ -12,7 +12,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it "responds successfully" do
       get :index
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 
@@ -20,7 +20,7 @@ RSpec.describe SessionsController, type: :controller do
 
     it "responds successfully" do
       get :new
-      expect(response).to be_success
+      expect(response).to be_successful
     end
   end
 

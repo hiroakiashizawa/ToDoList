@@ -1,0 +1,19 @@
+<table class="table">
+  <%= form_with(scope: :projects, url: project_path, method: :patch, local: true) do |p| %>
+    <thead>
+      <tr>
+        <td><h3>Edit Project</h3></td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= p.label :project_name %></td>
+        <td><%= p.text_field :project_name %></td>
+      </tr>
+      <tr>
+        <td><%= p.submit %></td>
+        <td><%= link_to "cancel", projects_path, method: :get %></td>
+      </tr>
+    </tbody>
+  <% end%>
+</table>
