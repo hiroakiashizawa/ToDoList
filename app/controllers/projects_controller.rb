@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :require_login
 
+  def show
+    @project = Project.find(params[:id])
+  end
+
   def index
     @projects = current_user.projects.all
   end

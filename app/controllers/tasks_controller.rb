@@ -90,7 +90,7 @@ class TasksController < ApplicationController
   private
 
     def tasks_params
-      params.require(:task).permit(:title, :content, :timelimit, :completed, :deleted, :user_id)
+      params.require(:task).permit(:title, :content, :timelimit, :completed, :deleted, :user_id, :project_id)
     end
 
     def require_login
