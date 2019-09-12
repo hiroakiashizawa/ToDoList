@@ -1,0 +1,32 @@
+<table class="table mt-2">
+  <tbody>
+    <tr>
+      <td><h3>Project Name</h3></td>
+    </tr>
+    <tr>
+      <td><%= @project.project_name %></td>
+      <td><%= link_to "Edit", edit_project_path(@project), method: :get %></td>
+      <td><%= link_to "Delete", project_path(@project), method: :delete, class:"text-danger" %></td>
+    </tr>
+  </tbody>
+</table>
+<table class="table mt-5">
+  <tbody>
+    <tr>
+      <td><h5>Associate Tasks</h5></td>
+    </tr>
+    <tr>
+      <td>Title</td>
+      <td>Content</td>
+      <td>Timelimit</td>
+    </tr>
+    <tr>
+      <% @project.tasks.each do |t| %>
+        <td><%= t.title %></td>
+        <td><%= t.content %></td>
+        <td><%= t.timelimit %></td>
+        <td><%= link_to 'remove', remove_task_project_path(@project), method: :patch %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>

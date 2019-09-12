@@ -3,6 +3,7 @@ FactoryBot.define do
     id { 50 }
     project_name { "WaoWao" }
     user_id { @user }
+    association :user
     
     factory :project_2 do
       id { 2 }
