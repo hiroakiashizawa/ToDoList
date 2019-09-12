@@ -20,7 +20,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :projects
+  resources :projects do
+    resources :tasks, controller: 'projects/tasks'
+  end
 
   get '/login/index' => 'sessions#index'
   get '/login' => 'sessions#new'
