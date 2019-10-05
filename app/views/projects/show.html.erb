@@ -20,13 +20,20 @@
       <td>Content</td>
       <td>Timelimit</td>
     </tr>
-    <tr>
+    <% if !@project.tasks.empty? %>
       <% @project.tasks.each do |t| %>
-        <td><%= t.title %></td>
-        <td><%= t.content %></td>
-        <td><%= t.timelimit %></td>
-        <td><%= link_to 'remove', remove_task_project_path(@project), method: :patch %></td>
+        <tr>
+          <td><%= link_to "#{t.title}", project_task_path(@project, t) %></td>
+          <td><%= t.content %></td>
+          <td><%= t.timelimit %></td>
+        </tr>
       <% end %>
-    </tr>
+    <% else %>
+      <tr>
+        <td>No Contents</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

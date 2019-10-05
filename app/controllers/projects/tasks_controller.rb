@@ -1,9 +1,10 @@
 class Projects::TasksController < ApplicationController
 
+  before_action :require_login
+
   def show
     @project = Project.find(params[:project_id])
-    @task = @project.tasks.where(params[:id])
-    binding.pry
+    @task = @project.tasks.find(params[:id])
   end
 
   def index
@@ -23,4 +24,13 @@ class Projects::TasksController < ApplicationController
 
   def destroy
   end
+
+  private
+
+    def require_login
+      unless logged_in?
+        flash[:danger] = "Please login!"
+        redirect_to login_path
+      end
+    end
 end
