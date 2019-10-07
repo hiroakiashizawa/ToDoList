@@ -1,0 +1,15 @@
+<%= link_to "+ New Project", new_project_path, class:"btn btn-bg btn-success" %>
+
+<table class="table mt-2">
+  <tbody>
+    <tr>
+      <td><h3>Project Name</h3></td>
+    </tr>
+    <% @projects.each do |p| %>
+      <tr>
+        <td><%= p.project_name %></td>
+        <td><%= link_to "Detail", project_path(p), method: :get %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

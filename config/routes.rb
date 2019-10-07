@@ -7,11 +7,21 @@ Rails.application.routes.draw do
   get 'users/new'
 
   resources :tasks do
-    get 'completed' => 'tasks#completed', on: :collection
-    patch 'edit_completed' => 'tasks#edit_completed', on: :member
-    get 'deleted' => 'tasks#deleted', on: :collection
-    patch 'pre_destroy' => 'tasks#pre_destroy', on: :member
-    get 'search' => 'tasks#search', on: :collection
+    collection do
+      get 'completed' => 'tasks#completed'
+      get 'deleted' => 'tasks#deleted'
+      get 'search' => 'tasks#search'
+      post 'search' => 'tasks#search'
+    end
+    
+    member do
+      patch 'edit_completed' => 'tasks#edit_completed'
+      patch 'pre_destroy' => 'tasks#pre_destroy'
+    end
+  end
+
+  resources :projects do
+    resources :tasks, controller: 'projects/tasks'
   end
 
   get '/login/index' => 'sessions#index'
@@ -23,4 +33,6 @@ Rails.application.routes.draw do
   get '/admin' => 'admin#index'
   get '/admin/users' => 'admin#users_show'
   get '/admin/tasks' => 'admin#tasks_show'
+
+  post '/callback' => 'linebot#callback'
 end

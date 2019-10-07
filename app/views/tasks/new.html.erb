@@ -18,6 +18,10 @@
       <td><%= f.date_field :timelimit %></td>
     </tr>
     <tr>
+      <td><%= f.label :Project %></td>
+      <td><%= f.select :project_id, Project.all.map {|project| [ project.project_name, project.id ]}%></td>
+    </tr>
+    <tr>
       <td><%= f.submit "submit", class:"btn btn-sm btn-primary" %></td>
       <td><%= link_to "cancel", tasks_path, class:"text-reset text-muted" %></td>
     </tr>

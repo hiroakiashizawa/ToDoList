@@ -19,6 +19,7 @@ gem 'jquery-rails'
 gem 'bcrypt', '~> 3.1', '>= 3.1.13'
 gem 'nio4r', '>= 2.4.0'
 gem 'rails-controller-testing'
+gem 'dotenv-rails'
 
 # 検索機能
 gem 'ransack'
@@ -31,10 +32,17 @@ gem 'will_paginate-bootstrap4'
 gem "chartkick"
 gem "groupdate"
 
+# LINEbot連携
+gem 'line-bot-api'
+
+# webpacker
+gem 'webpacker', '~> 4.x'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.7.0'
   gem 'factory_bot_rails'
+  gem 'rubocop-rspec'
   gem 'pry'
   gem 'pry-doc'
   gem 'pry-byebug'
@@ -52,7 +60,7 @@ end
 group :test do
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers', '~> 3.0'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

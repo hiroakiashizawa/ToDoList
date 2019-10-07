@@ -1,6 +1,6 @@
 <div>
   <span>
-    <%= button_to '+ New Task', new_task_path, class:"btn btn-bg btn-primary", method: :get %>
+    <%= button_to '+ New Task', new_task_path, class:"btn btn-bg btn-success", method: :get %>
   </span>
   <table class="table mt-2">
     <thead>
@@ -20,7 +20,7 @@
           <td><%= task.content %></td>
           <td><%= task.timelimit %></td>
           <td><%= link_to "Edit", edit_task_path(task), method: :get, class: "text-info" %></td>
-          <td><%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-danger" %></td>
+          <td><%= link_to "Complete", edit_completed_task_path(task), method: :patch, class: "text-success" %></td>
           <td><%= link_to "Delete", pre_destroy_task_path(task), method: :patch, class: "text-danger", data: { confirm: "Are you sure?" } %></td>
         </tr>
       <% end %>
