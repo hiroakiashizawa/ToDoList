@@ -22,21 +22,22 @@
 - アプリ基本動作[CRUD]作成 (2019/6/17~23)
 - UT作成 (2019/6/24~30)
 - 追加機能実装(2019/7/1~31)
-・ログイン・ログアウト機能
-・管理者ユーザー機能
-・Project機能
-・タグ機能
-・Task検索機能
+- ログイン・ログアウト機能(2019/6/29~7/5)
+- 管理者ユーザー機能(~2019/7/5)
+- Project機能
+- タグ機能
+- Task検索機能(~2019/8/25)
+- フロントエンドをVue.jsに改修(2019/10/04~)
 
 ## Prefix Rule
 ### Type
-  - Must be one of the following:  
-  
-  - feat: A new feature  
-  - fix: A bug fix  
-  - docs: Documentation only changes  
-  - style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)  
-  - refactor: A code change that neither fixes a bug nor adds a feature  
-  - perf: A code change that improves performance  
-  - test: Adding missing or correcting existing tests  
-  - chore: Changes to the build process or auxiliary tools and libraries such as documentation generation  
+- Must be one of the following:  
+
+- feat: A new feature  
+- fix: A bug fix  
+- docs: Documentation only changes  
+- style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)  
+- refactor: A code change that neither fixes a bug nor adds a feature  
+- perf: A code change that improves performance  
+- test: Adding missing or correcting existing tests  
+- chore: Changes to the build process or auxiliary tools and libraries such as documentation generation  
